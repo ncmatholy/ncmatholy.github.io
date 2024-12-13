@@ -13,7 +13,7 @@ Our mission is to make these proof-based olympiads acessible to the community.
 
 ## Proofs seem hard! Should I take the NCMO or NCJMO?
 
-First things first, don't be intimidated by the word "proof"! 
+First things first, don't be intimidated by the word "proof"!
 Just think about it as a fancy way of saying, "explain your thought process as clearly as you can."
 We encourage you to take the NC(J)MO even if you're inexperienced!
 Specifically, if you haven't quite explored outside school math, or tasted competition math beyond the AMCs, we encourage you to take the NCJMO.
@@ -22,6 +22,11 @@ However, if you've comfortably qualified for the AIME **or** you have experience
 Disclaimer: for those of you who have heard of the USA(J)MO, the NC(J)MO doesn't correspond in difficulty!
 The NCJMO consists entirely of problems that would be approachable to the general public, and the NCMO is like a USAJMO with a couple easy problems tacked onto the beginning and maybe a banger at the end.
 
+## What is the format of NC(J)MO?
+
+There are 5 proof problems with a time limit of 3 hours.
+You are allowed to use writing utensils, erasers, scratch paper, rulers, and compasses.
+
 ## I won't go if there isn't pizza.
 
-We are doing our best to acquire sponsors to feed you dinner, and we may even be serving pi :o 
+We are doing our best to acquire sponsors to feed you dinner, and we may even be serving pi :o
