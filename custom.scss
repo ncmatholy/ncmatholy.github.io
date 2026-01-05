@@ -1,0 +1,44 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+$enable-shadows: true;
+$card-height: 100%;
+$display-font-weight: $font-weight-bold;
+$navbar-nav-link-padding-x: 1rem;
+
+$accent: #81f7e5;
+$neutral: #7b2d26;
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "accent": $accent,
+    "neutral": $neutral,
+  )
+);
+$table-variants: map-merge(
+  $table-variants,
+  (
+    "neutral": shift-color($neutral, $table-bg-scale),
+  )
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+a:not(.btn):not(.navbar-brand) {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.nav-link {
+  font-weight: $font-weight-bold;
+  &:hover {
+    color: $neutral;
+  }
+}
+
+.card {
+  box-shadow: $box-shadow;
+}

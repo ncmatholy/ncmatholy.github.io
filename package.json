@@ -1,0 +1,17 @@
+{
+  "name": "ncmatholy.github.io",
+  "version": "1.0.0",
+  "description": "North Carolina Math Olympiad",
+  "scripts": {
+    "build": "sass custom.scss output/static/bootstrap.css --style=compressed",
+    "watch": "sass --watch custom.scss output/static/bootstrap.css"
+  },
+  "keywords": [],
+  "author": "NCMO Staff <ncmatholy@gmail.com>",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.97.1"
+  }
+}

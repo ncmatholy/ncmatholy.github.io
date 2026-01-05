@@ -1,0 +1,102 @@
+{% extends "base.j2" %}
+{% block header %}
+    <header class="mb-5 bg-light border-bottom border-secondary border-opacity-25 shadow-sm text-center py-5">
+        <div class="container">
+            <img src="/favicon.ico"
+                 alt="logo"
+                 width="200"
+                 height="200"
+                 class="d-none d-sm-inline mb-3">
+            <h1 class="display-1">NC(J)MO</h1>
+            <h3>North Carolina (Junior) Math Olympiad</h3>
+            <p class="lead">
+                An annual proof-based math competition to introduce
+                proof-writing to anyone at any stage in their math journey,
+                while simultaneously posing difficult problems to challenge the experienced.
+            </p>
+            <a href="{{ reg_link }}" class="btn btn-accent">Register now!</a>
+            <a href="/about" class="btn btn-neutral ms-3">Learn more</a>
+        </div>
+    </header>
+{% endblock %}
+{% block main %}
+    <h1>Registration for NC(J)MO 2026 is open!</h1>
+    <p>
+        Registration remains open until <strong>January 21st, 2026</strong>.
+    </p>
+    <p>
+        You can read more about the competition <a href="/about">here</a>
+        or take a look at our <a href="/archive">past problems</a>.
+    </p>
+    <p>More details on logistics will be emailed out a week before the competition.</p>
+    <table class="table table-striped">
+        <thead class="table-neutral">
+            <tr>
+                <th>State</th>
+                <th>Site</th>
+                <th>Place</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>NC</td>
+                <td>Triangle</td>
+                <td>Cary Academy</td>
+                <td>1/24</td>
+                <td>9:00 AM – 12:00 PM</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>NC</td>
+                <td>Charlotte</td>
+                <td>Myers Park High School</td>
+                <td>1/24</td>
+                <td>2:00 PM – 5:00 PM</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>NC</td>
+                <td>NCSSM Durham</td>
+                <td>NCSSM Durham</td>
+                <td>1/24</td>
+                <td>2:00 PM – 5:00 PM</td>
+                <td>Available only to NCSSM students</td>
+            </tr>
+            <tr>
+                <td>VA</td>
+                <td>TJ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>MD</td>
+                <td>Poolesville</td>
+                <td></td>
+                <td>1/23</td>
+                <td>12:45 PM – 3:45 PM</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>MD</td>
+                <td>Blaire</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Online</td>
+                <td>N/A</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

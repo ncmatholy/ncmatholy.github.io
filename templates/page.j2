@@ -1,0 +1,10 @@
+{% extends "base.j2" %}
+{% block title %}{{ page_title }} | {{ super() }}{% endblock %}
+{% block description %}{{ page_desc }}{% endblock %}
+{% block header %}
+    <header class="container text-center py-5">
+        <h1 class="display-1">{{ page_title }}</h1>
+        <p class="lead">{{ page_desc }}</p>
+        <hr>
+    </header>
+{% endblock %}
