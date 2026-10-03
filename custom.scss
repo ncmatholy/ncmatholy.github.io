@@ -27,8 +27,7 @@ p + p {margin-top:1.1em;}
 .skip-link:focus {transform:translateY(0);}
 .site-header {background:var(--paper); position:relative; z-index:10;}
 .header-inner {display:flex; justify-content:space-between; align-items:center; min-height:100px; border-bottom:1px solid var(--line); gap:25px;}
-.brand {display:flex; gap:11px; align-items:center; font-family:var(--serif); font-size:29px; letter-spacing:-1.6px; line-height:1;}
-.brand-j {font-size:.82em;}
+.brand {display:flex; gap:11px; align-items:center; font-family:var(--sans); font-size:26px; font-weight:700; letter-spacing:-.035em; line-height:1.15; white-space:nowrap;}
 .brand-period {color:var(--coral);}
 .site-nav {display:flex; align-items:center; gap:34px; font-size:14px; font-weight:500;}
 .site-nav > a {position:relative; padding-block:12px;}
@@ -114,7 +113,7 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
 .button-light {background:var(--paper); color:var(--green);}
 .button-light:hover {background:var(--sage);}
 .footer-bottom {display:grid; grid-template-columns:1fr 1fr auto; gap:24px; padding-block:37px 44px; align-items:start;}
-.footer-brand {font-family:var(--serif); font-size:25px; line-height:1; letter-spacing:-1px;}
+.footer-brand {font-family:var(--sans); font-size:25px; font-weight:700; line-height:1.15; letter-spacing:-.035em; white-space:nowrap;}
 .footer-bottom p {font-size:11px; color:#d0d9c9; margin-top:10px;}
 .footer-bottom nav {display:flex; justify-content:center; flex-wrap:wrap; gap:24px; font-size:12px; padding-top:4px;}
 .footer-bottom a:hover {text-decoration:underline; text-underline-offset:4px;}
@@ -231,7 +230,7 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
     html {scroll-padding-top:30px;}
     .container {width:calc(100% - 40px);}
     .header-inner {min-height:80px; flex-wrap:wrap; gap:0;}
-    .brand {font-size:26px;}
+    .brand {font-size:24px;}
     .brand img {width:30px; height:30px;}
     .menu-toggle:not([hidden]) {display:flex;}
     .site-nav {width:100%; flex-direction:column; align-items:stretch; gap:0; padding:10px 0 22px; font-size:16px;}
