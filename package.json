@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "North Carolina Math Olympiad",
   "scripts": {
-    "build": "sass custom.scss output/static/bootstrap.css --style=compressed",
-    "watch": "sass --watch custom.scss output/static/bootstrap.css"
+    "build": "npm run build:css && python app.py",
+    "build:css": "sass custom.scss output/static/site.css --style=compressed --no-source-map",
+    "watch": "sass --watch custom.scss output/static/site.css --no-source-map",
+    "dev": "python -m flask --app app run --debug --no-debugger --host 127.0.0.1 --port 8000",
+    "preview": "python -m http.server 8080 --bind 127.0.0.1 --directory output",
+    "test": "python -m unittest discover -s tests -p \"test_*.py\"",
+    "test:browser": "playwright test"
   },
   "keywords": [],
   "author": "NCMO Staff <ncmatholy@gmail.com>",
@@ -13,5 +18,9 @@
   "dependencies": {
     "bootstrap": "^5.3.8",
     "sass": "^1.97.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0"
   }
 }
