@@ -36,7 +36,6 @@
 
   // Motion only enhances visible content; nothing waits for JS to become readable.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const activeAnimations = new Map();
   const canAnimate = typeof Element.prototype.animate === 'function' &&
     window.CSS && CSS.supports('translate', '0 1px');
@@ -73,41 +72,9 @@
     entranceTargets.forEach(element => observer.observe(element));
   };
 
-  const artwork = document.querySelector('.hero-art');
-  const artworkImage = artwork?.querySelector('img');
-  let tiltFrame = 0;
-  const resetTilt = () => {
-    if (tiltFrame) window.cancelAnimationFrame(tiltFrame);
-    tiltFrame = 0;
-    artworkImage?.style.setProperty('--art-rotate-x', '0deg');
-    artworkImage?.style.setProperty('--art-rotate-y', '0deg');
-  };
-  if (artworkImage && window.requestAnimationFrame) {
-    let tiltX = 0;
-    let tiltY = 0;
-    artwork.addEventListener('pointermove', event => {
-      if (reducedMotion.matches || !finePointer.matches || event.pointerType === 'touch') return;
-      // Measure the stationary wrapper, so the tilting image cannot shift its own target.
-      const bounds = artwork.getBoundingClientRect();
-      if (!bounds.width || !bounds.height) return;
-      const clamp = value => Math.max(-1, Math.min(1, value));
-      tiltX = -clamp((event.clientY - bounds.top) / bounds.height * 2 - 1) * 3;
-      tiltY = clamp((event.clientX - bounds.left) / bounds.width * 2 - 1) * 3;
-      if (tiltFrame) return;
-      tiltFrame = window.requestAnimationFrame(() => {
-        artworkImage.style.setProperty('--art-rotate-x', `${tiltX}deg`);
-        artworkImage.style.setProperty('--art-rotate-y', `${tiltY}deg`);
-        tiltFrame = 0;
-      });
-    });
-    artwork.addEventListener('pointerleave', resetTilt);
-    window.addEventListener('blur', resetTilt);
-  }
-  finePointer.addEventListener('change', resetTilt);
   reducedMotion.addEventListener('change', () => {
     activeAnimations.forEach(animation => animation.cancel());
     activeAnimations.clear();
-    resetTilt();
     observeEntrances();
   });
   observeEntrances();
