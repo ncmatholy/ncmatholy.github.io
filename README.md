@@ -4,7 +4,9 @@ A small, self-contained Flask/Jinja site that builds to static HTML for GitHub P
 
 ## Reviewing the redesign
 
-The redesign is on `redesign/math-competition-site`. Screenshots are in [docs/review](docs/review/README.md). The draft pull request is for review only: merging into `2026` triggers the existing GitHub Pages deployment. Do not merge until the design and content have been approved.
+The published site uses the Proof identity: an open-square mark, nested-square illustrations, and a three-dot mathematical accent. The wordmark uses a clear, full-size J. FAQs start collapsed and use native browser controls to open with a click or keyboard.
+
+Screenshots of the initial redesign are retained in [docs/review](docs/review/README.md). Merging into `2026` triggers the existing GitHub Pages deployment; keep unapproved changes on review branches.
 
 For a working local preview, prepare dependencies and run the commands below. `npm run preview` serves the committed static output exactly as Pages does, apart from Pages' custom 404 handling. `npm run dev` renders the templates directly and reloads them as you edit.
 
@@ -34,6 +36,8 @@ In another terminal, run `npm run watch` while changing `custom.scss`. This upda
 ## Build and publish
 
 `npm run build` compiles `custom.scss` to `output/static/site.css`, then runs `app.py` to render all templates. It writes both `/about.html` and `/about/index.html` (likewise archive and staff), preserving old URLs and supporting trailing slashes. Documents and Google verification remain untouched.
+
+Shared styles and illustrations receive automatic content-version URLs during rendering, so returning visitors receive changed artwork and CSS after a deployment.
 
 The existing workflow in `.github/workflows/static.yml` uploads **committed `output` files**. It does not build templates. After editing source, run the build and commit the generated HTML/CSS together. Deployment happens only on pushes to `2026` or a manually requested workflow; this redesign branch does not deploy.
 
