@@ -59,7 +59,7 @@ p + p {margin-top:1.1em;}
 .edition-note a {text-decoration:underline; text-underline-offset:3px; margin-left:3px; white-space:nowrap;}
 .status-dot {display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--green); margin-right:5px; vertical-align:1px;}
 .hero-art {position:relative; align-self:center; animation:arrive .8s ease-out both;}
-.hero-art img {width:100%; height:auto; transform:perspective(1000px) rotateX(var(--art-rotate-x,0deg)) rotateY(var(--art-rotate-y,0deg)); transition:transform .35s ease-out;}
+.hero-art img {width:100%; height:auto;}
 @keyframes arrive {from {opacity:0; transform:translateY(12px);} to {opacity:1; transform:translateY(0);}}
 .contest-facts {display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); padding-block:27px; gap:30px;}
 .contest-facts > div {display:flex; align-items:center; gap:24px; padding-left:25px; border-left:1px solid var(--line);}
@@ -354,5 +354,5 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
 .tip-symbol {width:40px; height:40px;}
 @media (max-width:760px) {.community-accent {width:75px; height:75px;}.tiny-accent {width:14px; height:14px;}.tip-symbol {width:30px; height:30px;}}
 @media (prefers-reduced-motion:reduce) {
-    .hero-art img, .team-card, .button, .text-link .arrow-icon, .download-link .arrow-icon, .aops-link .arrow-icon {transform:none !important;}
+    .team-card, .button, .text-link .arrow-icon, .download-link .arrow-icon, .aops-link .arrow-icon {transform:none !important;}
 }

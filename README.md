@@ -49,7 +49,7 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 - `templates/archive.j2`: one `editions` list defines years and AoPS destinations. Add new PDFs under `output/static/YEAR/` using the existing filenames. The filter options and archive rows are generated from that list.
 - `templates/staff.j2`: leadership and test-solver biographies.
 - `custom.scss`: colors, type, spacing, responsive layout, and motion preferences.
-- `output/static/site.js`: mobile navigation, archive filters, and restrained scroll/pointer interactions. Content stays visible before animation setup and works without JavaScript. Reduced-motion preferences disable entrances, filter transitions, and illustration tilt, including when the preference changes while browsing.
+- `output/static/site.js`: mobile navigation, archive filters, and restrained scroll interactions. Content stays visible before animation setup and works without JavaScript. Reduced-motion preferences disable entrances and filter transitions, including when the preference changes while browsing.
 - `output/static/geometry.svg`, `mark.svg`, and `spark.svg`: original vector illustrations. Both the header logo and browser tab use `mark.svg`: forest green and coral on a warm-paper backplate, which blends into the page and stays visible on dark tabs. `favicon.svg` preserves the previous asset URL for compatibility.
 
 Fonts are Fraunces for display headings, Lora for team names and initials, and DM Sans for body text, distributed locally under the included SIL Open Font Licenses. Existing Bootstrap files remain available for compatibility with old static asset URLs; the redesigned pages do not load them or depend on external CDNs.
@@ -66,7 +66,7 @@ Browser tests use Playwright and axe against the built static output. The prepar
 
 ## Content that needs an organizer's review
 
-- The live homepage says grading is in progress, but the live archive already links the 2026 results-and-solutions PDF. This version shows the existing results and retains the earlier message in a historical note.
+- The original homepage said grading was in progress, but the archive already linked the 2026 results-and-solutions PDF. The published site shows the existing results and retains the earlier message in a historical note.
 - The January 24–25, 2026 schedule and snowstorm updates describe the concluded contest. They are retained in the homepage's expandable historical section. Original times are unchanged; the existing site did not explicitly specify a timezone.
 - The registration link is preserved and identified as the original form for the concluded 2026 contest. Its current acceptance status has not been assumed.
 - Staff biographies are preserved from the latest rendered site; school years and time-sensitive achievements may need updating. No new biographies, contest dates, eligibility rules, or organizer information have been invented.
