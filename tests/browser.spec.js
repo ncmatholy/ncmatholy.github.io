@@ -45,6 +45,24 @@ test('keyboard users can skip navigation and reach main content', async ({ page 
   await expect(page.getByRole('main')).toBeFocused();
 });
 
+test('FAQ answers start closed and open with mouse or keyboard', async ({ page }) => {
+  await page.goto('/about/');
+  const answers = page.locator('.faq-list details > p');
+  await expect(answers).toHaveCount(2);
+  for (const answer of await answers.all()) await expect(answer).toBeHidden();
+
+  const summaries = page.locator('.faq-list summary');
+  await summaries.nth(0).click();
+  await expect(answers.nth(0)).toBeVisible();
+  await expect(answers.nth(1)).toBeHidden();
+  await summaries.nth(0).focus();
+  await page.keyboard.press('Enter');
+  await expect(answers.nth(0)).toBeHidden();
+  await summaries.nth(1).focus();
+  await page.keyboard.press('Enter');
+  await expect(answers.nth(1)).toBeVisible();
+});
+
 test('mobile navigation opens with a keyboard, closes with Escape, and follows links', async ({ page }) => {
   test.skip(page.viewportSize().width > 760, 'The menu is only used on narrow screens.');
   await page.goto('/');
