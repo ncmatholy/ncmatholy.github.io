@@ -2,6 +2,8 @@
 
 These screenshots record the initial redesign review. The redesign was subsequently approved and published. The current site also includes the corrected wordmark, the selected Proof identity, and FAQs that start collapsed; the screenshots below remain a record of the original review.
 
+See the [latest content and archive update](content-update/README.md) for current homepage and compact archive screenshots.
+
 The visual direction uses warm paper, deep green, coral, Fraunces display typography, DM Sans text, and original geometric illustrations. Homepage links lead to the contest guide, team, and filterable problem archive. Each page uses the same navigation and footer.
 
 ## Screenshots

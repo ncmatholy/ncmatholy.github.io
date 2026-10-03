@@ -6,6 +6,8 @@ A small, self-contained Flask/Jinja site that builds to static HTML for GitHub P
 
 The published site uses the Proof identity: an open-square mark, nested-square illustrations, and a three-dot mathematical accent. The wordmark uses a clear, full-size J. FAQs start collapsed and use native browser controls to open with a click or keyboard.
 
+Page headings identify their purpose directly. The homepage has a registration placeholder awaiting confirmed future contest details; the original 2026 form remains in the footer. PDFs and external websites open in new tabs, while site navigation stays in the current tab. Archive entries use compact rows with readable labels and generous tap targets.
+
 Screenshots of the initial redesign are retained in [docs/review](docs/review/README.md). Merging into `2026` triggers the existing GitHub Pages deployment; keep unapproved changes on review branches.
 
 For a working local preview, prepare dependencies and run the commands below. `npm run preview` serves the committed static output exactly as Pages does, apart from Pages' custom 404 handling. `npm run dev` renders the templates directly and reloads them as you edit.
