@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 560" role="img" aria-labelledby="title"><title id="title">Nested open squares and a mathematical construction grid</title>
+<defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#1b4840" stroke-opacity=".1" stroke-width="1"/></pattern></defs>
+<rect x="74" y="76" width="392" height="392" fill="#e6ece3"/>
+<rect x="48" y="48" width="448" height="448" fill="url(#grid)"/>
+<g fill="none" stroke="#1b4840" stroke-width="1" stroke-opacity=".27" stroke-dasharray="5 7"><path d="M72 64 457 449M72 449 457 64M280 30v458M30 256h484"/></g>
+<g fill="none" stroke="#1b4840"><path d="M394 440H72V72H440V379" stroke-width="3.2"/><path d="M332 366H146V146H366V328" stroke-width="2.2"/><path d="M282 292H220V220H292V275" stroke-width="1.8"/></g>
+<path d="M409 409h31v31h-31z" fill="#ed6745"/>
+<path d="M346 346h20v20h-20z" fill="#ed6745" opacity=".5"/>
+<path d="M282 282h10v10h-10z" fill="#ed6745"/>
+<g stroke="#1b4840" fill="#f7f5ee" stroke-width="1.5"><path d="M68 68h8v8h-8zM436 68h8v8h-8zM68 436h8v8h-8z"/></g>
+<g font-family="Georgia,serif" font-size="21" font-style="italic" fill="#1b4840"><text x="52" y="60">A</text><text x="451" y="65">B</text><text x="46" y="455">D</text></g>
+<g transform="translate(48 476)"><path d="M0 0h194v50H0z" fill="#1b4840"/><text x="17" y="33" font-family="Georgia,serif" font-size="22" font-style="italic" fill="#f7f5ee">Every step counts.</text></g>
+<g fill="#ed6745"><circle cx="481" cy="461" r="4"/><circle cx="470" cy="481" r="4"/><circle cx="492" cy="481" r="4"/></g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 560" role="img" aria-labelledby="title"><title id="title">Seven angular pieces combine into an asymmetric mathematical kite</title>
+<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#1b4840" fill-opacity=".2"/></pattern></defs>
+<rect x="42" y="40" width="468" height="452" fill="url(#dots)"/>
+<g fill="none" stroke="#1b4840" stroke-opacity=".25" stroke-width="1" stroke-dasharray="5 7"><path d="M70 314H510M372 32V505M105 315 510 56M44 461 474 374"/></g>
+<path d="M105 315 372 76 474 374 270 487Z" fill="#e6ece3"/>
+<path d="M105 315 372 76 314 308Z" fill="#1b4840"/>
+<path d="M372 76 423 225 314 308Z" fill="#1b4840" opacity=".2"/>
+<path d="M423 225 474 374 371 341 314 308Z" fill="#ed6745"/>
+<path d="M371 341 474 374 372 431 319 399Z" fill="#1b4840" opacity=".12"/>
+<path d="M319 399 372 431 270 487 209 401Z" fill="#1b4840"/>
+<path d="M105 315 209 401 212 312 314 308Z" fill="#1b4840" opacity=".18"/>
+<path d="M209 401 212 312 314 308 371 341 319 399Z" fill="#1b4840" opacity=".05"/>
+<g fill="none" stroke="#1b4840" stroke-width="1.2"><path d="M105 315 372 76 474 374 270 487Z" stroke-width="2.5"/><path d="M372 76 314 308 105 315M423 225 314 308 371 341 474 374M371 341 319 399 372 431M270 487 209 401 105 315M209 401 212 312 314 308M319 399 209 401"/></g>
+<g fill="#1b4840"><path d="M101 311h8v8h-8zM368 72h8v8h-8zM470 370h8v8h-8zM266 483h8v8h-8z"/></g>
+<g fill="#1b4840" font-family="Georgia,serif" font-size="22" font-style="italic"><text x="81" y="304">A</text><text x="379" y="66">B</text><text x="486" y="382">C</text></g>
+<g transform="translate(48 476)"><path d="M0 0h198v50H0z" fill="#1b4840"/><text x="17" y="33" font-family="Georgia,serif" font-size="22" font-style="italic" fill="#f7f5ee">Find another angle.</text></g>
+</svg>
