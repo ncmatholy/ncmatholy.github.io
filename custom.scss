@@ -46,7 +46,7 @@ p + p {margin-top:1.1em;}
 .tiny-accent {font-size:20px; color:var(--coral); margin-right:8px; vertical-align:-2px;}
 .hero {display:grid; grid-template-columns:1.25fr 1fr; align-items:center; gap:20px; padding-block:68px 54px;}
 .hero h1 {font-size:clamp(46px,4.7vw,68px); line-height:1.08; letter-spacing:-.045em;}
-.hero h1 em {display:inline-block;}
+.hero-title-accent {display:inline-block; color:var(--green);}
 .hero-intro {max-width:450px; margin-top:27px; font-size:17px; color:var(--muted); line-height:1.8;}
 .registration-placeholder {max-width:540px; margin-top:26px; padding:22px 24px; border:1px solid var(--line); border-left:4px solid var(--coral); border-radius:4px; background:var(--sage);}
 .registration-placeholder h2 {font-size:34px;}
