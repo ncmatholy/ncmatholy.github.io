@@ -1,69 +1,44 @@
 {% set reg_link = "https://forms.gle/57ULZhRrbpaL4ZLq9" %}
+{% set active_page = active_page | default("") %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description"
-              content="{% block description %}The North Carolian (Junior) Math Olympiad Website.{% endblock %}">
-        <meta name="author" content="NC(J)MO Staff">
-        <link rel="stylesheet" href="/static/bootstrap.css">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <title>
-            {% block title %}North Carolina Math Olympiad{% endblock %}
-        </title>
-    </head>
-    <body class="d-flex flex-column min-vh-100">
-        <nav class="navbar navbar-expand-md sticky-top bg-body-secondary border-bottom border-neutral shadow">
-            <div class="container-xl">
-                <a class="navbar-brand" href="/">
-                    <!-- <img src="/favicon.ico" alt="logo" height="32" width="32" class="me-md-2"> -->
-                    NC(J)MO
-                </a>
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/staff">Staff</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/archive">Archive</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ reg_link }}" target="_blank">Register</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f5ee">
+    <meta name="description" content="{% block description %}Five problems. Three hours. A world of possibilities. The North Carolina (Junior) Math Olympiad is a proof-based competition for curious minds.{% endblock %}">
+    <title>{% block title %}NC(J)MO — North Carolina Math Olympiad{% endblock %}</title>
+    <link rel="icon" type="image/svg+xml" href="/static/mark.svg">
+    <link rel="preload" href="/static/fonts/fraunces-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/static/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/static/site.css">
+    <script src="/static/site.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/" aria-label="NC(J)MO home"><img src="/static/mark.svg" width="34" height="34" alt=""><span>NC<span class="brand-j">(J)</span>MO<span class="brand-period">.</span></span></a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><span class="menu-label">Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+            <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+                <a href="/about/"{% if active_page == 'about' %} aria-current="page"{% endif %}>About the contest</a>
+                <a href="/archive/"{% if active_page == 'archive' %} aria-current="page"{% endif %}>Past problems</a>
+                <a href="/staff/"{% if active_page == 'staff' %} aria-current="page"{% endif %}>Our team</a>
+                <a class="nav-contact" href="mailto:ncmatholy@gmail.com">Get in touch <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a>
+            </nav>
+        </div>
+    </header>
+    <main id="main" tabindex="-1">
         {% block header %}{% endblock %}
-        <main class="container mb-5">
-            {% block main %}
-                <div class="col-xl-8 mx-auto">
-                    {% block content %}{% endblock %}
-                </div>
-            {% endblock %}
-        </main>
-        <footer class="mt-auto bg-body-secondary text-center py-3 text-secondary">
-            <a href="mailto:ncmatholy@gmail.com">
-                <i class="bi bi-envelope-fill"></i>
-                Contact Us
-            </a>
-            <div>
-                North Carolina Math Olympiad <i class="bi bi-dot"></i> 2026
-            </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-                crossorigin="anonymous"></script>
-    </body>
+        {% block main %}<div class="container page-content">{% block content %}{% endblock %}</div>{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-top"><div><p class="section-label">THERE’S ALWAYS ANOTHER WAY TO THINK.</p><p class="footer-title">Stay curious.</p></div><a class="button button-light" href="/archive/">Find your next problem <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></div>
+        <div class="container footer-bottom">
+            <div><a class="footer-brand" href="/">NC(J)MO.</a><p>North Carolina (Junior) Math Olympiad</p></div>
+            <nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/archive/">Archive</a><a href="/staff/">Team</a><a href="mailto:ncmatholy@gmail.com">Contact</a></nav>
+            <p class="footer-edition">2026 edition<br><a href="{{ reg_link }}" target="_blank" rel="noopener">Original registration form <span class="sr-only">(opens in a new tab)</span><svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a><span class="footer-form-note">The 2026 contest has concluded.</span></p>
+        </div>
+    </footer>
+</body>
 </html>

@@ -1,10 +1,9 @@
 {% extends "base.j2" %}
-{% block title %}{{ page_title }} | {{ super() }}{% endblock %}
+{% block title %}{{ page_title }} | NC(J)MO{% endblock %}
 {% block description %}{{ page_desc }}{% endblock %}
 {% block header %}
-    <header class="container text-center py-5">
-        <h1 class="display-1">{{ page_title }}</h1>
-        <p class="lead">{{ page_desc }}</p>
-        <hr>
-    </header>
+<header class="page-header container">
+    <div class="page-header-copy"><p class="section-label">{{ page_kicker | default('NORTH CAROLINA MATH OLYMPIAD') }}</p><h1>{{ page_title }}</h1><p class="page-intro">{{ page_desc }}</p></div>
+    <div class="page-decoration" aria-hidden="true"><span>∴</span><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="48"/><path d="M60 12 18 84h84Z M12 60h96 M60 12v96"/></svg></div>
+</header>
 {% endblock %}

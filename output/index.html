@@ -1,143 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description"
-              content="The North Carolian (Junior) Math Olympiad Website.">
-        <meta name="author" content="NC(J)MO Staff">
-        <link rel="stylesheet" href="/static/bootstrap.css">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <title>
-            North Carolina Math Olympiad
-        </title>
-    </head>
-    <body class="d-flex flex-column min-vh-100">
-        <nav class="navbar navbar-expand-md sticky-top bg-body-secondary border-bottom border-neutral shadow">
-            <div class="container-xl">
-                <a class="navbar-brand" href="/">
-                    <!-- <img src="/favicon.ico" alt="logo" height="32" width="32" class="me-md-2"> -->
-                    NC(J)MO
-                </a>
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/staff">Staff</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/archive">Archive</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://forms.gle/57ULZhRrbpaL4ZLq9" target="_blank">Register</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        
-    <header class="mb-5 bg-light border-bottom border-secondary border-opacity-25 shadow-sm text-center py-5">
-        <div class="container">
-            <!-- <img src="/favicon.ico"
-      alt="logo"
-      width="200"
-      height="200"
-      class="d-none d-sm-inline mb-3"> -->
-            <h1 class="display-1">NC(J)MO</h1>
-            <h3>North Carolina (Junior) Math Olympiad</h3>
-            <p class="lead">
-                An annual proof-based math competition to introduce
-                proof-writing to anyone at any stage in their math journey,
-                while simultaneously posing difficult problems to challenge the experienced.
-            </p>
-            <a href="https://forms.gle/57ULZhRrbpaL4ZLq9" target="_blank" class="btn btn-accent">Register now!</a>
-            <a href="/about" class="btn btn-neutral ms-3">Learn more</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f5ee">
+    <meta name="description" content="Five problems. Three hours. A world of possibilities. The North Carolina (Junior) Math Olympiad is a proof-based competition for curious minds.">
+    <title>NC(J)MO — North Carolina Math Olympiad</title>
+    <link rel="icon" type="image/svg+xml" href="/static/mark.svg">
+    <link rel="preload" href="/static/fonts/fraunces-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/static/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/static/site.css">
+    <script src="/static/site.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/" aria-label="NC(J)MO home"><img src="/static/mark.svg" width="34" height="34" alt=""><span>NC<span class="brand-j">(J)</span>MO<span class="brand-period">.</span></span></a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><span class="menu-label">Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+            <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+                <a href="/about/">About the contest</a>
+                <a href="/archive/">Past problems</a>
+                <a href="/staff/">Our team</a>
+                <a class="nav-contact" href="mailto:ncmatholy@gmail.com">Get in touch <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a>
+            </nav>
         </div>
     </header>
-
-        <main class="container mb-5">
-            
-    <h1>The NC(J)MO 2026 has concluded.</h1>
-    <div class="alert alert-warning">
-        <p>
-            <b>Important Announcement:</b>
-            Due to the unfortunate timing of a heavy snowstorm forecast on January 24th,
-            we are moving the sites for Charlotte and the Triangle to an online format.
-        </p>
-        <b>Update:</b>
-        As NCSSM Durham is shifting to condition 2,
-        the NCSSM site will also be moving online.
+    <main id="main" tabindex="-1">
+<section class="hero container" aria-labelledby="hero-title">
+    <div class="hero-copy">
+        <p class="section-label"><img class="tiny-star" src="/static/spark.svg" alt=""> NORTH CAROLINA (JUNIOR) MATH OLYMPIAD</p>
+        <h1 id="hero-title">Good problems.<br>Great <em>possibilities.</em></h1>
+        <p class="hero-intro">A little curiosity can take you a long way. A proof-based math competition for anyone ready to explore, think deeply, and discover something new.</p>
+        <div class="hero-actions"><a class="button" href="/archive/">Explore past problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a><a class="text-link" href="/about/">Meet the contest <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a></div>
+        <p class="edition-note"><span class="status-dot" aria-hidden="true"></span> The 2026 contest has concluded. <a href="/archive/#year-2026">Results &amp; solutions are here <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></p>
     </div>
-    <p>Grading is in progress.</p>
-    <p>
-        You can read more about the competition <a href="/about">here</a>
-        or take a look at our <a href="/archive">past problems</a>.
-    </p>
-    <h2>North Carolina sites</h2>
-    <table class="table table-striped">
-        <thead class="table-neutral">
-            <tr>
-                <th>Site</th>
-                <th>Place</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Notes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Triangle</td>
-                <td>Online</td>
-                <td>1/24</td>
-                <td>2:00 PM – 5:00 PM</td>
-                <td>See announcement</td>
-            </tr>
-            <tr>
-                <td>Charlotte</td>
-                <td>Online</td>
-                <td>1/24</td>
-                <td>2:00 PM – 5:00 PM</td>
-                <td>See announcement</td>
-            </tr>
-            <tr>
-                <td>NCSSM Durham</td>
-                <td>Online</td>
-                <td>1/24</td>
-                <td>2:00 PM – 5:00 PM</td>
-                <td>See announcement</td>
-            </tr>
-            <tr>
-                <td>Online</td>
-                <td>Online</td>
-                <td>1/25</td>
-                <td>1:00 PM - 4:00 PM</td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-        </main>
-        <footer class="mt-auto bg-body-secondary text-center py-3 text-secondary">
-            <a href="mailto:ncmatholy@gmail.com">
-                <i class="bi bi-envelope-fill"></i>
-                Contact Us
-            </a>
-            <div>
-                North Carolina Math Olympiad <i class="bi bi-dot"></i> 2026
-            </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-                crossorigin="anonymous"></script>
-    </body>
+    <figure class="hero-art"><img src="/static/geometry.svg" alt="" width="560" height="560"><figcaption><span class="figure-number">FIG. 01</span> A different angle changes everything.</figcaption></figure>
+</section>
+<div class="container">
+    <section class="contest-facts" aria-label="Contest at a glance">
+        <div><span class="fact-number">05<span>.</span></span><p>Proof problems<br><span>Ideas, not just answers.</span></p></div>
+        <div><span class="fact-number">03<span>.</span></span><p>Hours to think<br><span>Time to find your own way.</span></p></div>
+        <div><span class="fact-number">02<span>.</span></span><p>Divisions<br><span>A place to start. Room to grow.</span></p></div>
+    </section>
+    <section class="section-space year-section" aria-labelledby="edition-title">
+        <div class="section-heading"><div><p class="section-label">THE 2026 EDITION</p><h2 id="edition-title">Pencils down.<br><em>Ideas live on.</em></h2></div><p>The contest may be over, but a good problem is always worth coming back to. Revisit the problems, explore the solutions, and keep thinking.</p></div>
+        <a class="edition-card" href="/archive/#year-2026"><div><span class="section-label">NOW IN THE ARCHIVE</span><h3>2026 problems,<br>results &amp; solutions.</h3><p>Both divisions. All in one place.</p></div><div class="edition-drawing" aria-hidden="true"><svg viewBox="0 0 220 180"><path d="M40 150 110 25 180 150Z M40 150h140 M110 25v125"/><circle cx="110" cy="104" r="46"/><circle cx="110" cy="25" r="5"/><circle cx="40" cy="150" r="5"/><circle cx="180" cy="150" r="5"/></svg></div><span class="round-arrow" aria-hidden="true"><svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></span></a>
+        <details class="historical-details"><summary>2026 contest dates &amp; site updates <span class="summary-note">Past event</span><span class="details-plus" aria-hidden="true">+</span></summary><div class="historical-content"><p>The NC(J)MO 2026 has concluded. The schedule below is retained for reference; it is not an announcement of an upcoming contest.</p><div class="table-wrap"><table><caption>January 2026 contest schedule</caption><thead><tr><th scope="col">Site</th><th scope="col">Format</th><th scope="col">Date</th><th scope="col">Time</th></tr></thead><tbody><tr><th scope="row">Triangle</th><td>Online</td><td>January 24</td><td>2:00 PM–5:00 PM</td></tr><tr><th scope="row">Charlotte</th><td>Online</td><td>January 24</td><td>2:00 PM–5:00 PM</td></tr><tr><th scope="row">NCSSM Durham</th><td>Online</td><td>January 24</td><td>2:00 PM–5:00 PM</td></tr><tr><th scope="row">Online</th><td>Online</td><td>January 25</td><td>1:00 PM–4:00 PM</td></tr></tbody></table></div><p><strong>Original site update:</strong> A heavy snowstorm forecast for January 24 moved the Charlotte and Triangle sites online. The NCSSM Durham site also moved online when NCSSM shifted to condition 2.</p><p class="content-note">The earlier homepage said “Grading is in progress.” The archive now includes the existing 2026 results-and-solutions document. No future contest dates have been announced on this site.</p></div></details>
+    </section>
+    <section class="section-space starting-section" aria-labelledby="start-title">
+        <div class="section-heading"><div><p class="section-label">ONE CONTEST. TWO STARTING POINTS.</p><h2 id="start-title">There’s a problem<br><em>with your name on it.</em></h2></div><a class="text-link" href="/about/#divisions">Find your division <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></div>
+        <div class="division-grid">
+            <article class="division-card"><div class="division-card-top"><span class="number-label">01 / JUNIOR DIVISION</span><span class="division-symbol" aria-hidden="true">∑</span></div><h3>Start with curiosity.</h3><p>New to proofs or exploring beyond school math? The NCJMO is an invitation to try, experiment, and explain your ideas.</p><a class="text-link" href="/archive/?division=NCJMO">Explore NCJMO problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></article>
+            <article class="division-card"><div class="division-card-top"><span class="number-label">02 / OLYMPIAD DIVISION</span><span class="division-symbol" aria-hidden="true">∞</span></div><h3>Take the next leap.</h3><p>Comfortable with the AIME or have some proof-writing experience? Challenge yourself with the NCMO.</p><a class="text-link" href="/archive/?division=NCMO">Explore NCMO problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></article>
+        </div>
+    </section>
+    <section class="community-section" aria-labelledby="community-title"><p class="section-label">MADE BY MATH PEOPLE, FOR MATH PEOPLE.</p><h2 id="community-title">A community built<br>around the <em>“what if?”</em></h2><p>We believe thoughtful, creative problem-solving belongs to everyone. Meet the people making proof-based math more accessible.</p><a class="text-link" href="/staff/">Meet our team <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a><img class="community-star" src="/static/spark.svg" alt=""></section>
+</div>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-top"><div><p class="section-label">THERE’S ALWAYS ANOTHER WAY TO THINK.</p><p class="footer-title">Stay curious.</p></div><a class="button button-light" href="/archive/">Find your next problem <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></div>
+        <div class="container footer-bottom">
+            <div><a class="footer-brand" href="/">NC(J)MO.</a><p>North Carolina (Junior) Math Olympiad</p></div>
+            <nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/archive/">Archive</a><a href="/staff/">Team</a><a href="mailto:ncmatholy@gmail.com">Contact</a></nav>
+            <p class="footer-edition">2026 edition<br><a href="https://forms.gle/57ULZhRrbpaL4ZLq9" target="_blank" rel="noopener">Original registration form <span class="sr-only">(opens in a new tab)</span><svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a><span class="footer-form-note">The 2026 contest has concluded.</span></p>
+        </div>
+    </footer>
+</body>
 </html>

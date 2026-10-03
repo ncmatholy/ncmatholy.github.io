@@ -1,50 +1,89 @@
 {% extends "page.j2" %}
-{% set page_title = "About" %}
-{% set page_desc = "ft. our story, faqs, and more" %}
+{% set active_page = 'about' %}
+{% set page_title = "A place for curious minds." %}
+{% set page_desc = "Proof-based math competitions that give you room to explore, explain, and discover." %}
+{% set page_kicker = "About NC(J)MO" %}
 {% block content %}
-    <p>
-        When you hear the phrase “math competition”, you’ll probably think of an fast-paced,
-        high-pressure short-answer test which rewards accuracy, intuition, and speed.
-        Although that has its own excitement, at the same time there is something special
-        about being able to forget about time and pressure and simply wrestle with a difficult problem,
-        staring out the window as you let your mind wander through the craziest ideas before a solution clicks.
-    </p>
-    <p>
-        We have met so many of you out there who are creative and ingenious,
-        and can think deeply and rigorously about difficult problems,
-        but don’t quite thrive under fast-paced, high-pressure environments.
-        Although there are competitions like the USA(J)MO
-        which do indeed foster deep and rigorous thinking,
-        virtually all of these are only accessible at the highest levels,
-        standing behind the walls of short-answer tests such as the AMCs and AIME.
-        Our mission is to make these proof-based olympiads accessible to the community.
-    </p>
-    <h2>What is the format of NC(J)MO?</h2>
-    <p>
-        There are 5 proof problems with a time limit of 3 hours.
-        You are allowed to use writing utensils, erasers, scratch paper, rulers, and compasses.
-    </p>
-    <h2>Proofs seem hard! Should I take the NC(J)MO?</h2>
-    <p>
-        First things first, don't be intimidated by the word "proof"!
-        Just think about it as a fancy way of saying, "explain your thought process as clearly as you can."
-        We encourage you to take the NC(J)MO even if you're inexperienced!
-    </p>
-    <h2>Should I take the NCMO or NCJMO?</h2>
-    <p>
-        If you haven't quite explored outside school math,
-        or tasted competition math beyond the AMCs, we encourage you to take the NCJMO.
-        However, if you've comfortably qualified for the AIME
-        or you have experienced with proof writing (e.g. from an advanced math course),
-        you should challenge yourself with the NCMO.
-    </p>
-    <p>
-        You can get a feeling of the difficulty from previous years <a href="/archive">here</a>.
-    </p>
-    <p>
-        <strong>Note:</strong>
-        For those of you who have heard of the USA(J)MO, the NC(J)MO doesn't correspond in difficulty!
-        The NCJMO consists entirely of problems that would be approachable to the general public,
-        and the NCMO is similar a USAJMO with a couple easy problems tacked onto the beginning and maybe a banger at the end.
-    </p>
+    <section class="two-column section-space" aria-labelledby="our-story">
+        <div class="prose">
+            <p class="section-label">Our story</p>
+            <h2 class="section-title" id="our-story">More room to think.</h2>
+            <p>
+                When you hear the phrase “math competition,” you’ll probably think of a fast-paced,
+                high-pressure short-answer test that rewards accuracy, intuition, and speed.
+                Although that has its own excitement, there is also something special
+                about being able to forget about time and pressure and simply wrestle with a difficult problem:
+                staring out the window as you let your mind wander through the craziest ideas before a solution clicks.
+            </p>
+            <p>
+                We have met so many of you who are creative and ingenious,
+                and can think deeply and rigorously about difficult problems,
+                but don’t quite thrive in fast-paced, high-pressure environments.
+                Although competitions like the USA(J)MO encourage deep and rigorous thinking,
+                virtually all of these are only accessible at the highest levels,
+                standing behind the walls of short-answer tests such as the AMCs and AIME.
+                Our mission is to make these proof-based olympiads accessible to the community.
+            </p>
+        </div>
+        <aside class="info-panel" aria-labelledby="contest-format">
+            <p class="section-label">The format</p>
+            <span class="number-label" aria-hidden="true">05 / 03</span>
+            <h2 class="section-title" id="contest-format">Five problems.<br>Three hours.</h2>
+            <p>There are 5 proof problems with a time limit of 3 hours.</p>
+            <p>You are allowed to use writing utensils, erasers, scratch paper, rulers, and compasses.</p>
+            <a class="text-link" href="/archive">Explore past problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a>
+        </aside>
+    </section>
+
+    <section class="section-space" id="divisions" aria-labelledby="choose-division">
+        <div class="prose">
+            <p class="section-label">Two divisions, one curiosity</p>
+            <h2 class="section-title" id="choose-division">Find your starting point.</h2>
+            <p>You can get a feeling for the difficulty by exploring <a href="/archive">problems from previous years</a>.</p>
+        </div>
+        <div class="division-grid">
+            <article class="division-card">
+                <p class="section-label">Junior division</p>
+                <h3>NCJMO</h3>
+                <p>
+                    If you haven’t quite explored beyond school math,
+                    or tasted competition math beyond the AMCs, we encourage you to take the NCJMO.
+                </p>
+                <p>The NCJMO consists entirely of problems that would be approachable to the general public.</p>
+            </article>
+            <article class="division-card">
+                <p class="section-label">Olympiad division</p>
+                <h3>NCMO</h3>
+                <p>
+                    If you’ve comfortably qualified for the AIME
+                    or have experience with proof writing, such as from an advanced math course,
+                    you should challenge yourself with the NCMO.
+                </p>
+                <p>The NCMO is similar to a USAJMO, with a couple of easy problems at the beginning and maybe a particularly challenging one at the end.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section-space prose" aria-labelledby="common-questions">
+        <p class="section-label">A little encouragement</p>
+        <h2 class="section-title" id="common-questions">Questions, answered.</h2>
+        <div class="faq-list">
+            <details open>
+                <summary>Proofs seem hard! Should I take the NC(J)MO?</summary>
+                <p>
+                    First things first, don’t be intimidated by the word “proof”!
+                    Think of it as a fancy way of saying, “explain your thought process as clearly as you can.”
+                    We encourage you to take the NC(J)MO even if you’re inexperienced!
+                </p>
+            </details>
+            <details>
+                <summary>Does NC(J)MO have the same difficulty as USA(J)MO?</summary>
+                <p>
+                    For those of you who have heard of the USA(J)MO, the NC(J)MO doesn’t correspond in difficulty.
+                    The NCJMO is designed to be approachable to the general public, while the NCMO is similar to a USAJMO
+                    with a couple of easy problems at the beginning and maybe a particularly challenging one at the end.
+                </p>
+            </details>
+        </div>
+    </section>
 {% endblock %}
