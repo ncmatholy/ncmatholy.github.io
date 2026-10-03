@@ -7,7 +7,7 @@ app = Flask(__name__, static_folder="output/static")
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 
-PAGES = ["about", "staff", "archive"]
+PAGES = ["about", "staff", "archive", "contact"]
 
 
 @app.template_global()

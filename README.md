@@ -37,7 +37,7 @@ In another terminal, run `npm run watch` while changing `custom.scss`. This upda
 
 ## Build and publish
 
-`npm run build` compiles `custom.scss` to `output/static/site.css`, then runs `app.py` to render all templates. It writes both `/about.html` and `/about/index.html` (likewise archive and staff), preserving old URLs and supporting trailing slashes. Documents and Google verification remain untouched.
+`npm run build` compiles `custom.scss` to `output/static/site.css`, then runs `app.py` to render all templates. It writes both `/about.html` and `/about/index.html` (likewise archive, staff, and contact), preserving old URLs and supporting trailing slashes. Documents and Google verification remain untouched.
 
 Shared styles, JavaScript, and illustrations receive automatic content-version URLs during rendering, so returning visitors receive updated behavior and artwork after a deployment.
 
@@ -47,14 +47,22 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 
 - `templates/base.j2`: shared navigation, metadata, fonts, and footer.
 - `templates/index.j2`: homepage, contest status, and historical schedule.
-- `templates/about.j2`: format, division advice, and FAQs.
+- `templates/about.j2`: rules, scoring, division advice, and FAQs.
+- `templates/contact.j2`: inquiry composer and the public email address.
 - `templates/archive.j2`: one `editions` list defines years and AoPS destinations. Add new PDFs under `output/static/YEAR/` using the existing filenames. The filter options and archive rows are generated from that list.
 - `templates/staff.j2`: leadership and test-solver biographies.
 - `custom.scss`: colors, type, spacing, responsive layout, and motion preferences.
 - `output/static/site.js`: mobile navigation, archive filters, and restrained scroll interactions. Content stays visible before animation setup and works without JavaScript. Reduced-motion preferences disable entrances and filter transitions, including when the preference changes while browsing.
+- `output/static/contact.js`: email-app/Gmail drafts and copy-address feedback. It loads only on the Contact page; messages stay in the page and are not stored or sent by the site.
 - `output/static/geometry.svg`, `mark.svg`, and `spark.svg`: original vector illustrations. Both the header logo and browser tab use `mark.svg`: forest green and coral on a warm-paper backplate, which blends into the page and stays visible on dark tabs. `favicon.svg` preserves the previous asset URL for compatibility.
 
 Fonts are Lora for display headings, team names, and initials, and DM Sans for body text, distributed locally under the included SIL Open Font Licenses. Lora gives the contest name and other headings a conventional uppercase J. Earlier Fraunces and Bootstrap files remain available for compatibility with old static asset URLs; the redesigned pages do not load them or depend on external CDNs.
+
+## Contact and contest rules
+
+Header and footer Contact links open `/contact/`; the footer also shows `ncmatholy@gmail.com`. Visitors can write an inquiry and open a draft in their email app or Gmail, then review and send it from their own account. No mail server or external form service is configured. Direct email and Gmail links remain usable without JavaScript. Adding delivery directly from the site would require an email service and its setup.
+
+The About page's Rules & scoring section uses the published 2025 NCJMO and NCMO instructions: five problems, three hours, seven points per problem, and grading based on completeness, clarity, and correctness. These PDFs remain unchanged. The organizers supplied the BAMO-style format and approximate difficulty comparisons: NCJMO is similar to BAMO-8; NCMO is approximately USAJMO. No external contest's eligibility, awards, or submission rules have been assumed.
 
 ## Checks
 

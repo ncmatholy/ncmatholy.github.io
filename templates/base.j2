@@ -13,6 +13,7 @@
     <link rel="preload" href="/static/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ static_asset('site.css') }}">
     <script src="{{ static_asset('site.js') }}" defer></script>
+    {% if active_page == 'contact' %}<script src="{{ static_asset('contact.js') }}" defer></script>{% endif %}
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -25,7 +26,7 @@
                 <a href="/about/"{% if active_page == 'about' %} aria-current="page"{% endif %}>About the contest</a>
                 <a href="/archive/"{% if active_page == 'archive' %} aria-current="page"{% endif %}>Past problems</a>
                 <a href="/staff/"{% if active_page == 'staff' %} aria-current="page"{% endif %}>Our team</a>
-                <a class="nav-contact" href="mailto:ncmatholy@gmail.com">Get in touch <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a>
+                <a class="nav-contact" href="/contact/"{% if active_page == 'contact' %} aria-current="page"{% endif %}>Contact <svg class="mail-icon" aria-hidden="true" viewBox="0 0 20 20"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="m3 5 7 5 7-5"/></svg></a>
             </nav>
         </div>
     </header>
@@ -36,8 +37,8 @@
     <footer class="site-footer">
         <div class="container footer-top"><div><p class="footer-title">Past problems</p></div><a class="button button-light" href="/archive/">Browse the archive <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></div>
         <div class="container footer-bottom">
-            <div><a class="footer-brand" href="/">NC(J)MO.</a><p>North Carolina (Junior) Math Olympiad</p></div>
-            <nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/archive/">Archive</a><a href="/staff/">Team</a><a href="mailto:ncmatholy@gmail.com">Contact</a></nav>
+            <div><a class="footer-brand" href="/">NC(J)MO.</a><p>North Carolina (Junior) Math Olympiad</p><p class="footer-contact"><a href="mailto:ncmatholy@gmail.com">ncmatholy@gmail.com</a></p></div>
+            <nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/about/#rules-scoring">Rules &amp; scoring</a><a href="/archive/">Archive</a><a href="/staff/">Team</a><a href="/contact/">Contact</a></nav>
             <p class="footer-edition">2026 edition<br><a href="{{ reg_link }}" target="_blank" rel="noopener" aria-describedby="new-tab-note">Original registration form <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a><span class="footer-form-note">The 2026 contest has concluded.</span></p>
         </div>
     </footer>

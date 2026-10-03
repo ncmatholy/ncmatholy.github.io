@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
-const routes = ['/', '/about/', '/staff/', '/archive/', '/404.html'];
+const routes = ['/', '/about/', '/staff/', '/archive/', '/contact/', '/404.html'];
 
 for (const route of routes) {
   test(`${route} renders an accessible layout with working local links and assets`, async ({ page, request }) => {
@@ -81,18 +81,122 @@ test('mobile navigation opens with a keyboard, closes with Escape, and follows l
   await expect(toggle).toBeFocused();
   await expect(navigation).toBeHidden();
   await page.keyboard.press('Enter');
-  const contact = navigation.getByRole('link', { name: 'Get in touch' });
-  // Simulate an email application opening without leaving the current document.
-  await contact.evaluate(link => link.addEventListener('click', event => event.preventDefault(), { once: true }));
+  const contact = navigation.getByRole('link', { name: 'Contact', exact: true });
   await contact.focus();
   await page.keyboard.press('Enter');
-  await expect(toggle).toBeFocused();
-  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await expect(page).toHaveURL('/contact/');
+  await expect(page.getByRole('heading', { level: 1, name: 'Contact' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Menu' })).toHaveAttribute('aria-expanded', 'false');
+  await expect(navigation).toBeHidden();
+  await toggle.focus();
   await page.keyboard.press('Enter');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL('/about/');
   await expect(page.getByRole('button', { name: 'Menu' })).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('rules and scoring explain the format and each division’s difficulty', async ({ page }) => {
+  await page.goto('/about/#rules-scoring');
+  const rules = page.locator('#rules-scoring');
+  await expect(rules).toBeVisible();
+  await expect(rules).toContainText(/five problems|5 problems/i);
+  await expect(rules).toContainText(/three[- ]hours?|3[- ]hours?/i);
+  await expect(rules).toContainText(/7 points/);
+  await expect(rules).toContainText(/35 points/);
+  await expect(page.locator('#divisions')).toContainText(/BAMO.?8/);
+  await expect(page.locator('#divisions')).toContainText(/USAJMO/);
+});
+
+test('Gmail drafts preserve typed content and open independently of the contact page', async ({ page, context }) => {
+  // Mock Gmail rather than visiting an account or sending an inquiry.
+  await context.route('https://mail.google.com/**', route => route.fulfill({
+    contentType: 'text/html',
+    body: '<title>Gmail draft test</title><p>Draft destination</p>',
+  }));
+  await page.goto('/contact/');
+  const subject = 'Competition inquiry: π & + / next year?';
+  const message = 'Hello NC(J)MO!\nCan you explain “partial credit” & 7 + 7?\n谢谢 — José';
+  await page.getByRole('textbox', { name: 'Subject', exact: true }).fill(subject);
+  await page.getByRole('textbox', { name: 'Message', exact: true }).fill(message);
+
+  const popupPromise = page.waitForEvent('popup');
+  await page.getByRole('link', { name: 'Open Gmail draft' }).click();
+  const popup = await popupPromise;
+  await popup.waitForLoadState('domcontentloaded');
+  const destination = new URL(popup.url());
+  expect(destination.origin).toBe('https://mail.google.com');
+  expect(destination.searchParams.get('to')).toBe('ncmatholy@gmail.com');
+  expect(destination.searchParams.get('su')).toBe(subject);
+  expect(destination.searchParams.get('body')).toBe(message);
+  expect(await popup.evaluate(() => window.opener)).toBeNull();
+  await expect(page).toHaveURL('/contact/');
+  await expect(page.getByRole('textbox', { name: 'Subject', exact: true })).toHaveValue(subject);
+  await expect(page.getByRole('textbox', { name: 'Message', exact: true })).toHaveValue(message);
+  await expect(page.locator('#contact-draft-status')).toContainText('Review and send your draft in Gmail.');
+  await popup.close();
+});
+
+test('email drafts validate required messages and preserve their encoded contents', async ({ page }) => {
+  await page.goto('/contact/');
+  const subjectInput = page.getByRole('textbox', { name: 'Subject', exact: true });
+  const messageInput = page.getByRole('textbox', { name: 'Message', exact: true });
+  const compose = page.getByRole('button', { name: 'Open email draft' });
+  const subject = 'π, proofs & a + sign?';
+  const message = 'First line & second question?\nTwo + two = four.\n你好';
+  await subjectInput.fill(subject);
+
+  // Chromium reports requests to open an email application through CDP.
+  // Inspect the native launch request without accessing a mail account or sending mail.
+  const session = await page.context().newCDPSession(page);
+  await session.send('Page.enable');
+  const requestedDrafts = [];
+  session.on('Page.windowOpen', event => {
+    if (event.url.startsWith('mailto:')) requestedDrafts.push(event.url);
+  });
+  await compose.click();
+  await expect(messageInput).toBeFocused();
+  await expect(page.locator('#contact-draft-status')).toBeEmpty();
+  expect(requestedDrafts).toEqual([]);
+  await expect(subjectInput).toHaveValue(subject);
+  await expect(page).toHaveURL('/contact/');
+
+  await messageInput.fill(message);
+  await compose.click();
+  await expect.poll(() => requestedDrafts.length).toBe(1);
+  const destination = new URL(requestedDrafts[0]);
+  expect(destination.protocol).toBe('mailto:');
+  expect(destination.pathname).toBe('ncmatholy@gmail.com');
+  expect(destination.searchParams.get('subject')).toBe(subject);
+  expect(destination.searchParams.get('body')).toBe(message);
+  await expect(page).toHaveURL('/contact/');
+  await expect(subjectInput).toHaveValue(subject);
+  await expect(messageInput).toHaveValue(message);
+  await expect(page.locator('#contact-draft-status')).toContainText('Review and send the draft in your email app.');
+  await session.detach();
+});
+
+test('the contact address can be copied to the clipboard', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.goto('/contact/');
+  await page.getByRole('button', { name: 'Copy email address' }).click();
+  await expect(page.locator('#contact-copy-status')).toHaveText('Email address copied.');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('ncmatholy@gmail.com');
+});
+
+test('a denied clipboard selects and focuses the address for manual copying', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'clipboard', {
+      value: {
+        writeText: async () => { throw new DOMException('Clipboard denied', 'NotAllowedError'); },
+      },
+    });
+  });
+  await page.goto('/contact/');
+  await page.getByRole('button', { name: 'Copy email address' }).click();
+  await expect(page.locator('#contact-copy-status')).toHaveText('Select and copy the email address above: ncmatholy@gmail.com.');
+  await expect(page.locator('#contact-email-address')).toBeFocused();
+  expect(await page.evaluate(() => window.getSelection().toString())).toBe('ncmatholy@gmail.com');
 });
 
 test('archive filters preserve shared results and browser history', async ({ page }) => {
@@ -171,6 +275,26 @@ test.describe('without JavaScript', () => {
       await expect(link).toBeVisible();
       expect((await request.get(await link.getAttribute('href'))).ok()).toBeTruthy();
     }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  });
+
+  test('contact has usable email destinations without JavaScript', async ({ page }) => {
+    await page.goto('/contact/');
+    await expect(page.locator('#contact-form')).toBeHidden();
+    await expect(page.getByRole('button', { name: 'Copy email address' })).toBeHidden();
+    const email = page.getByRole('link', { name: 'ncmatholy@gmail.com', exact: true });
+    await expect(email.first()).toBeVisible();
+    for (const address of await email.all()) {
+      await expect(address).toHaveAttribute('href', 'mailto:ncmatholy@gmail.com');
+    }
+    const gmail = page.getByRole('link', { name: 'Open Gmail draft' });
+    await expect(gmail).toBeVisible();
+    await expect(gmail).toHaveAttribute('target', '_blank');
+    await expect(gmail).toHaveAttribute('rel', 'noopener');
+    const destination = new URL(await gmail.getAttribute('href'));
+    expect(destination.searchParams.get('to')).toBe('ncmatholy@gmail.com');
+    expect(destination.searchParams.get('su')).toBe('NC(J)MO inquiry');
+    await expect(page.locator('#contact-draft-status')).toBeEmpty();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
   });
 });

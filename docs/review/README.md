@@ -4,6 +4,8 @@ These screenshots record the initial redesign review. The redesign was subsequen
 
 See the [latest content and archive update](content-update/README.md) for current homepage and compact archive screenshots.
 
+See the [Contact, rules, and scoring update](contact-rules/README.md) for the inquiry composer and contest guidance.
+
 The visual direction uses warm paper, deep green, coral, Fraunces display typography, DM Sans text, and original geometric illustrations. Homepage links lead to the contest guide, team, and filterable problem archive. Each page uses the same navigation and footer.
 
 ## Screenshots

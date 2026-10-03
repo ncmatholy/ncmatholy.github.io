@@ -3,6 +3,16 @@
 {% set page_title = "About the contest" %}
 {% set page_desc = "Proof-based math competitions that give you room to explore, explain, and discover." %}
 {% block content %}
+    <nav class="page-links" aria-label="On this page"><a class="text-link" href="#rules-scoring">Rules &amp; scoring</a><a class="text-link" href="#divisions">Divisions</a><a class="text-link" href="#common-questions">Questions</a></nav>
+    <section class="section-space rules-section" id="rules-scoring" aria-labelledby="rules-title">
+        <div class="prose"><h2 class="section-title" id="rules-title">Rules &amp; scoring</h2><p id="contest-format">NC(J)MO follows a BAMO-style proof-based format. Both divisions have five problems and a three-hour time limit.</p></div>
+        <div class="rules-grid">
+            <article class="rule-card"><h3>7 points per problem</h3><p>Solutions are graded on completeness, clarity, and correctness. With five problems, the maximum score is 35 points.</p></article>
+            <article class="rule-card"><h3>Show your reasoning</h3><p>Write proofs that explain how you reached your conclusions. Submit any progress you have, even if you have not fully solved a problem.</p></article>
+            <article class="rule-card"><h3>Allowed tools</h3><p>You may use writing utensils, erasers, and scratch paper. A straightedge or ruler and a compass are optional.</p></article>
+        </div>
+        <p class="rules-source">See the original scoring instructions in the <a href="/static/2025/NCJMO-2025.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">2025 NCJMO paper</a> and <a href="/static/2025/NCMO-2025.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">2025 NCMO paper</a>.</p>
+    </section>
     <section class="two-column section-space" aria-labelledby="our-story">
         <div class="prose">
             <h2 class="section-title" id="our-story">Why this contest?</h2>
@@ -23,10 +33,10 @@
                 Our mission is to make these proof-based olympiads accessible to the community.
             </p>
         </div>
-        <aside class="info-panel" aria-labelledby="contest-format">
-            <h2 class="section-title" id="contest-format">Five problems.<br>Three hours.</h2>
-            <p>You are allowed to use writing utensils, erasers, scratch paper, rulers, and compasses.</p>
-            <a class="text-link" href="/archive">Explore past problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a>
+        <aside class="info-panel" aria-labelledby="contest-practice">
+            <h2 class="section-title" id="contest-practice">Past problems</h2>
+            <p>Browse both divisions’ tests, solutions, and results to see the level and style of the questions.</p>
+            <a class="text-link" href="/archive">Browse the archive <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a>
         </aside>
     </section>
 
@@ -42,7 +52,7 @@
                     If you haven’t quite explored beyond school math,
                     or tasted competition math beyond the AMCs, we encourage you to take the NCJMO.
                 </p>
-                <p>The NCJMO consists entirely of problems that would be approachable to the general public.</p>
+                <p>The difficulty is similar to BAMO-8. Explore past NCJMO problems to see what to expect.</p>
             </article>
             <article class="division-card">
                 <h3>NCMO (Olympiad)</h3>
@@ -51,7 +61,7 @@
                     or have experience with proof writing, such as from an advanced math course,
                     you should challenge yourself with the NCMO.
                 </p>
-                <p>The NCMO is similar to a USAJMO, with a couple of easy problems at the beginning and maybe a particularly challenging one at the end.</p>
+                <p>The difficulty is approximately USAJMO level, with a couple of easier problems at the beginning and potentially a particularly challenging one at the end.</p>
             </article>
         </div>
     </section>
@@ -70,9 +80,8 @@
             <details>
                 <summary>Does NC(J)MO have the same difficulty as USA(J)MO?</summary>
                 <p>
-                    For those of you who have heard of the USA(J)MO, the NC(J)MO doesn’t correspond in difficulty.
-                    The NCJMO is designed to be approachable to the general public, while the NCMO is similar to a USAJMO
-                    with a couple of easy problems at the beginning and maybe a particularly challenging one at the end.
+                    NCJMO is similar in difficulty to BAMO-8. NCMO is approximately USAJMO level,
+                    with a couple of easier problems at the beginning and potentially a particularly challenging one at the end.
                 </p>
             </details>
         </div>
