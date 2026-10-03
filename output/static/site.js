@@ -34,6 +34,84 @@
     render();
   }
 
+  // Motion only enhances visible content; nothing waits for JS to become readable.
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const activeAnimations = new Map();
+  const canAnimate = typeof Element.prototype.animate === 'function' &&
+    window.CSS && CSS.supports('translate', '0 1px');
+  const animate = (element, distance, duration, delay = 0) => {
+    if (reducedMotion.matches || !canAnimate) return;
+    activeAnimations.get(element)?.cancel();
+    const animation = element.animate([
+      { translate: `0 ${distance}px`, opacity: 0.96 },
+      { translate: '0 0', opacity: 1 }
+    ], { duration, delay, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+    activeAnimations.set(element, animation);
+    const clear = () => {
+      if (activeAnimations.get(element) === animation) activeAnimations.delete(element);
+    };
+    animation.addEventListener('finish', clear, { once: true });
+    animation.addEventListener('cancel', clear, { once: true });
+  };
+  const entranceTargets = new Set(document.querySelectorAll(
+    '.section-heading, .info-panel, .division-card, .team-card, ' +
+    '.archive-year-heading, .document-row, .community-section'
+  ));
+  let observer;
+  const observeEntrances = () => {
+    observer?.disconnect();
+    if (reducedMotion.matches || !canAnimate || !('IntersectionObserver' in window)) return;
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        entranceTargets.delete(entry.target);
+        if (!activeAnimations.has(entry.target)) animate(entry.target, 8, 400);
+      });
+    }, { threshold: 0.12 });
+    entranceTargets.forEach(element => observer.observe(element));
+  };
+
+  const artwork = document.querySelector('.hero-art');
+  const artworkImage = artwork?.querySelector('img');
+  let tiltFrame = 0;
+  const resetTilt = () => {
+    if (tiltFrame) window.cancelAnimationFrame(tiltFrame);
+    tiltFrame = 0;
+    artworkImage?.style.setProperty('--art-rotate-x', '0deg');
+    artworkImage?.style.setProperty('--art-rotate-y', '0deg');
+  };
+  if (artworkImage && window.requestAnimationFrame) {
+    let tiltX = 0;
+    let tiltY = 0;
+    artwork.addEventListener('pointermove', event => {
+      if (reducedMotion.matches || !finePointer.matches || event.pointerType === 'touch') return;
+      // Measure the stationary wrapper, so the tilting image cannot shift its own target.
+      const bounds = artwork.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      const clamp = value => Math.max(-1, Math.min(1, value));
+      tiltX = -clamp((event.clientY - bounds.top) / bounds.height * 2 - 1) * 3;
+      tiltY = clamp((event.clientX - bounds.left) / bounds.width * 2 - 1) * 3;
+      if (tiltFrame) return;
+      tiltFrame = window.requestAnimationFrame(() => {
+        artworkImage.style.setProperty('--art-rotate-x', `${tiltX}deg`);
+        artworkImage.style.setProperty('--art-rotate-y', `${tiltY}deg`);
+        tiltFrame = 0;
+      });
+    });
+    artwork.addEventListener('pointerleave', resetTilt);
+    window.addEventListener('blur', resetTilt);
+  }
+  finePointer.addEventListener('change', resetTilt);
+  reducedMotion.addEventListener('change', () => {
+    activeAnimations.forEach(animation => animation.cancel());
+    activeAnimations.clear();
+    resetTilt();
+    observeEntrances();
+  });
+  observeEntrances();
+
   const controls = document.querySelector('[data-archive-controls]');
   if (!controls) return;
   controls.hidden = false;
@@ -49,7 +127,9 @@
     };
   };
   let filters = readFilters();
-  const apply = () => {
+  const rows = Array.from(document.querySelectorAll('.document-row'));
+  const apply = (interacted = false) => {
+    rows.forEach(row => activeAnimations.get(row)?.cancel());
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filters.division)));
     yearSelect.value = filters.year;
     let documents = 0;
@@ -63,6 +143,9 @@
       });
     });
     count.textContent = `${documents} documents · ${visibleYears} ${visibleYears === 1 ? 'year' : 'years'} · ${filters.division === 'all' ? 'Both divisions' : filters.division + ' + shared results'}`;
+    // Announce the new result count immediately, then gently acknowledge the update.
+    if (interacted) rows.filter(row => !row.hidden && !row.closest('[data-year]').hidden)
+      .forEach((row, index) => animate(row, 4, 220, Math.min(index * 12, 40)));
   };
   const updateURL = () => {
     const url = new URL(window.location.href);
@@ -76,9 +159,9 @@
   };
   buttons.forEach(button => button.addEventListener('click', () => {
     if (filters.division === button.dataset.filter) return;
-    filters.division = button.dataset.filter; apply(); updateURL();
+    filters.division = button.dataset.filter; apply(true); updateURL();
   }));
-  yearSelect.addEventListener('change', () => { filters.year = yearSelect.value; apply(); updateURL(); });
-  window.addEventListener('popstate', () => { filters = readFilters(); apply(); });
+  yearSelect.addEventListener('change', () => { filters.year = yearSelect.value; apply(true); updateURL(); });
+  window.addEventListener('popstate', () => { filters = readFilters(); apply(true); });
   apply();
 })();
