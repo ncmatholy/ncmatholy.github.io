@@ -50,7 +50,7 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 - `templates/staff.j2`: leadership and test-solver biographies.
 - `custom.scss`: colors, type, spacing, responsive layout, and motion preferences.
 - `output/static/site.js`: mobile navigation and archive filters. Core content and links work without JavaScript.
-- `output/static/geometry.svg`, `mark.svg`, and `spark.svg`: original vector illustrations. `favicon.svg` uses a brighter blue with a dark edge so the tab icon remains visible in light and dark browser themes.
+- `output/static/geometry.svg`, `mark.svg`, and `spark.svg`: original vector illustrations. Both the header logo and browser tab use `mark.svg`: forest green and coral on a warm-paper backplate, which blends into the page and stays visible on dark tabs. `favicon.svg` preserves the previous asset URL for compatibility.
 
 Fonts are Fraunces for display headings, Lora for team names and initials, and DM Sans for body text, distributed locally under the included SIL Open Font Licenses. Existing Bootstrap files remain available for compatibility with old static asset URLs; the redesigned pages do not load them or depend on external CDNs.
 
