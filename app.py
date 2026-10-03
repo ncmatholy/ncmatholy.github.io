@@ -1,3 +1,4 @@
+from hashlib import sha256
 from pathlib import Path
 
 from flask import Flask, render_template, send_from_directory
@@ -7,6 +8,13 @@ app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 
 PAGES = ["about", "staff", "archive"]
+
+
+@app.template_global()
+def static_asset(filename):
+    """Keep returning visitors from seeing outdated styles or illustrations."""
+    version = sha256((Path(app.static_folder) / filename).read_bytes()).hexdigest()[:12]
+    return f"/static/{filename}?v={version}"
 
 
 def serve_template(file):

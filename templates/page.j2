@@ -4,6 +4,6 @@
 {% block header %}
 <header class="page-header container">
     <div class="page-header-copy"><p class="section-label">{{ page_kicker | default('NORTH CAROLINA MATH OLYMPIAD') }}</p><h1>{{ page_title }}</h1><p class="page-intro">{{ page_desc }}</p></div>
-    <div class="page-decoration" aria-hidden="true"><img class="page-accent" src="/static/spark.svg" alt=""><svg viewBox="0 0 120 120"><path d="M84 108H12V12h96v74 M68 84H36V36h48v32"/><path class="proof-corner" d="M92 92h16v16H92Z"/></svg></div>
+    <div class="page-decoration" aria-hidden="true"><img class="page-accent" src="{{ static_asset('spark.svg') }}" alt=""><svg viewBox="0 0 120 120"><path d="M84 108H12V12h96v74 M68 84H36V36h48v32"/><path class="proof-corner" d="M92 92h16v16H92Z"/></svg></div>
 </header>
 {% endblock %}

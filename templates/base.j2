@@ -8,17 +8,17 @@
     <meta name="theme-color" content="#f7f5ee">
     <meta name="description" content="{% block description %}Five problems. Three hours. A world of possibilities. The North Carolina (Junior) Math Olympiad is a proof-based competition for curious minds.{% endblock %}">
     <title>{% block title %}NC(J)MO — North Carolina Math Olympiad{% endblock %}</title>
-    <link rel="icon" type="image/svg+xml" href="/static/mark.svg">
+    <link rel="icon" type="image/svg+xml" href="{{ static_asset('mark.svg') }}">
     <link rel="preload" href="/static/fonts/fraunces-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/static/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/static/site.css">
+    <link rel="stylesheet" href="{{ static_asset('site.css') }}">
     <script src="/static/site.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="/" aria-label="NC(J)MO home"><img src="/static/mark.svg" width="34" height="34" alt=""><span>NC(J)MO<span class="brand-period">.</span></span></a>
+            <a class="brand" href="/" aria-label="NC(J)MO home"><img src="{{ static_asset('mark.svg') }}" width="34" height="34" alt=""><span>NC(J)MO<span class="brand-period">.</span></span></a>
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><span class="menu-label">Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
             <nav id="site-nav" class="site-nav" aria-label="Main navigation">
                 <a href="/about/"{% if active_page == 'about' %} aria-current="page"{% endif %}>About the contest</a>

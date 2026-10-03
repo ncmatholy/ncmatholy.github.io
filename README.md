@@ -37,6 +37,8 @@ In another terminal, run `npm run watch` while changing `custom.scss`. This upda
 
 `npm run build` compiles `custom.scss` to `output/static/site.css`, then runs `app.py` to render all templates. It writes both `/about.html` and `/about/index.html` (likewise archive and staff), preserving old URLs and supporting trailing slashes. Documents and Google verification remain untouched.
 
+Shared styles and illustrations receive automatic content-version URLs during rendering, so returning visitors receive changed artwork and CSS after a deployment.
+
 The existing workflow in `.github/workflows/static.yml` uploads **committed `output` files**. It does not build templates. After editing source, run the build and commit the generated HTML/CSS together. Deployment happens only on pushes to `2026` or a manually requested workflow; this redesign branch does not deploy.
 
 ## Where to edit
