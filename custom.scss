@@ -1,11 +1,9 @@
 /* NC(J)MO design system. Compiled to output/static/site.css with npm run build. */
-@font-face {font-family: 'Fraunces'; font-style: normal; font-weight: 500; font-display: swap; src: url('/static/fonts/fraunces-latin-500-normal.woff2') format('woff2');}
-@font-face {font-family: 'Fraunces'; font-style: italic; font-weight: 500; font-display: swap; src: url('/static/fonts/fraunces-latin-500-italic.woff2') format('woff2');}
 @font-face {font-family: 'Lora'; font-style: normal; font-weight: 500; font-display: swap; src: url('/static/fonts/lora-latin-500-normal.woff2') format('woff2');}
 @font-face {font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('/static/fonts/dm-sans-latin-400-normal.woff2') format('woff2');}
 @font-face {font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('/static/fonts/dm-sans-latin-500-normal.woff2') format('woff2');}
 @font-face {font-family: 'DM Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('/static/fonts/dm-sans-latin-700-normal.woff2') format('woff2');}
-:root {--paper:#f7f5ee; --ink:#252e2a; --green:#1b4840; --muted:#59625b; --coral:#ed6745; --line:#d9dcd2; --sage:#e6ece3; --serif:'Fraunces', Georgia, serif; --team-serif:'Lora', Georgia, serif; --sans:'DM Sans', sans-serif;}
+:root {--paper:#f7f5ee; --ink:#252e2a; --green:#1b4840; --muted:#59625b; --coral:#ed6745; --line:#d9dcd2; --sage:#e6ece3; --serif:'Lora', Georgia, serif; --team-serif:'Lora', Georgia, serif; --sans:'DM Sans', sans-serif;}
 *, *::before, *::after {box-sizing: border-box;}
 html {scroll-behavior:smooth; scroll-padding-top:110px;}
 body {margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;}
