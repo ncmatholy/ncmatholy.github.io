@@ -37,7 +37,7 @@ In another terminal, run `npm run watch` while changing `custom.scss`. This upda
 
 `npm run build` compiles `custom.scss` to `output/static/site.css`, then runs `app.py` to render all templates. It writes both `/about.html` and `/about/index.html` (likewise archive and staff), preserving old URLs and supporting trailing slashes. Documents and Google verification remain untouched.
 
-Shared styles and illustrations receive automatic content-version URLs during rendering, so returning visitors receive changed artwork and CSS after a deployment.
+Shared styles, JavaScript, and illustrations receive automatic content-version URLs during rendering, so returning visitors receive updated behavior and artwork after a deployment.
 
 The existing workflow in `.github/workflows/static.yml` uploads **committed `output` files**. It does not build templates. After editing source, run the build and commit the generated HTML/CSS together. Deployment happens only on pushes to `2026` or a manually requested workflow; this redesign branch does not deploy.
 
@@ -49,7 +49,7 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 - `templates/archive.j2`: one `editions` list defines years and AoPS destinations. Add new PDFs under `output/static/YEAR/` using the existing filenames. The filter options and archive rows are generated from that list.
 - `templates/staff.j2`: leadership and test-solver biographies.
 - `custom.scss`: colors, type, spacing, responsive layout, and motion preferences.
-- `output/static/site.js`: mobile navigation and archive filters. Core content and links work without JavaScript.
+- `output/static/site.js`: mobile navigation, archive filters, and restrained scroll/pointer interactions. Content stays visible before animation setup and works without JavaScript. Reduced-motion preferences disable entrances, filter transitions, and illustration tilt, including when the preference changes while browsing.
 - `output/static/geometry.svg`, `mark.svg`, and `spark.svg`: original vector illustrations. Both the header logo and browser tab use `mark.svg`: forest green and coral on a warm-paper backplate, which blends into the page and stays visible on dark tabs. `favicon.svg` preserves the previous asset URL for compatibility.
 
 Fonts are Fraunces for display headings, Lora for team names and initials, and DM Sans for body text, distributed locally under the included SIL Open Font Licenses. Existing Bootstrap files remain available for compatibility with old static asset URLs; the redesigned pages do not load them or depend on external CDNs.
