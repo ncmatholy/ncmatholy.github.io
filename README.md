@@ -54,7 +54,7 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 - `output/static/site.js`: mobile navigation, archive filters, and restrained scroll interactions. Content stays visible before animation setup and works without JavaScript. Reduced-motion preferences disable entrances and filter transitions, including when the preference changes while browsing.
 - `output/static/geometry.svg`, `mark.svg`, and `spark.svg`: original vector illustrations. Both the header logo and browser tab use `mark.svg`: forest green and coral on a warm-paper backplate, which blends into the page and stays visible on dark tabs. `favicon.svg` preserves the previous asset URL for compatibility.
 
-Fonts are Fraunces for display headings, Lora for team names and initials, and DM Sans for body text, distributed locally under the included SIL Open Font Licenses. Existing Bootstrap files remain available for compatibility with old static asset URLs; the redesigned pages do not load them or depend on external CDNs.
+Fonts are Lora for display headings, team names, and initials, and DM Sans for body text, distributed locally under the included SIL Open Font Licenses. Lora gives the contest name and other headings a conventional uppercase J. Earlier Fraunces and Bootstrap files remain available for compatibility with old static asset URLs; the redesigned pages do not load them or depend on external CDNs.
 
 ## Checks
 

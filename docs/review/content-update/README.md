@@ -2,7 +2,7 @@
 
 The homepage leads with the contest name and a prominent registration placeholder. Dates and signup details are awaiting an organizer's announcement. Page and section headings state their purpose directly; decorative slogans and small repeated captions have been removed.
 
-Homepage headings use a consistent upright serif style, including the complete contest name. Its green accent changes the color without introducing italics.
+Headings use Lora, an upright serif with a conventional uppercase J, including the complete contest name. Its green accent changes the color without introducing italics.
 
 PDFs and external websites open in new tabs. Navigation between pages stays in the current tab. Archive rows are about 40% shorter and retain 44px link targets on phones.
 
