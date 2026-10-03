@@ -1,25 +1,23 @@
 {% extends "page.j2" %}
 {% set active_page = 'archive' %}
-{% set page_kicker = 'THE PROBLEM LIBRARY' %}
-{% set page_title = 'Ideas worth revisiting.' %}
-{% set page_desc = 'A good problem doesn’t have an expiration date. Explore past contests, find a fresh challenge, and see where your ideas take you.' %}
+{% set page_title = 'Past problems' %}
+{% set page_desc = 'Browse NCMO and NCJMO problems by year. Results and solutions cover both divisions.' %}
 {% set editions = [(2026, 'c4712972', 'c4712973', 'c5h3752861'), (2025, 'c4166369', 'c4167328', 'c5h3467015')] %}
 {% block content %}
 <div class="archive-toolbar" data-archive-controls hidden>
     <div class="division-filters" role="group" aria-label="Filter by division"><button type="button" data-filter="all" aria-pressed="true">All divisions</button><button type="button" data-filter="NCJMO" aria-pressed="false">NCJMO <span>Junior</span></button><button type="button" data-filter="NCMO" aria-pressed="false">NCMO <span>Olympiad</span></button></div>
     <label class="year-filter" for="archive-year">Year <select id="archive-year"><option value="all">All years</option>{% for year, _, _, _ in editions %}<option value="{{ year }}">{{ year }}</option>{% endfor %}</select></label>
 </div>
-<p class="archive-count" data-archive-count aria-live="polite" aria-atomic="true">{{ (editions | length) * 3 }} documents · {{ editions | length }} years</p>
+<p class="sr-only" data-archive-count aria-live="polite" aria-atomic="true">{{ (editions | length) * 3 }} documents · {{ editions | length }} years</p>
 <div class="archive-years">
 {% for year, olympiad_collection, junior_collection, post in editions %}
 <section class="archive-year" id="year-{{ year }}" data-year="{{ year }}" aria-labelledby="year-heading-{{ year }}">
-    <div class="archive-year-heading"><h2 id="year-heading-{{ year }}">{{ year }}<span class="year-dot">.</span></h2><a class="text-link" href="https://aops.com/community/{{ post }}">AoPS Post <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg><span class="sr-only"> — {{ year }}</span></a></div>
-    {% for division, label, collection in [('NCMO', 'OLYMPIAD DIVISION', olympiad_collection), ('NCJMO', 'JUNIOR DIVISION', junior_collection)] %}
-    <article class="document-row" data-division="{{ division }}"><span class="document-figure" aria-hidden="true">{% if division == 'NCMO' %}△{% else %}○{% endif %}</span><div class="document-title"><span class="number-label">{{ label }} · PROBLEM SET</span><h3>{{ division }} {{ year }}</h3></div><div class="document-actions"><a class="download-link" href="/static/{{ year }}/{{ division }}-{{ year }}.pdf">Problem set <span class="file-type">PDF</span><svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v14M4 11l6 6 6-6"/></svg><span class="sr-only"> — {{ division }} {{ year }}</span></a><a class="aops-link" href="https://aops.com/community/{{ collection }}">AoPS collection <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg><span class="sr-only"> — {{ division }} {{ year }}</span></a></div></article>
+    <div class="archive-year-heading"><h2 id="year-heading-{{ year }}">{{ year }}<span class="year-dot">.</span></h2><a class="text-link" href="https://aops.com/community/{{ post }}" target="_blank" rel="noopener" aria-describedby="new-tab-note">AoPS Post <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg><span class="sr-only"> — {{ year }}</span></a></div>
+    {% for division, label, collection in [('NCMO', 'Olympiad', olympiad_collection), ('NCJMO', 'Junior', junior_collection)] %}
+    <article class="document-row" data-division="{{ division }}"><span class="document-figure" aria-hidden="true">{% if division == 'NCMO' %}△{% else %}○{% endif %}</span><div class="document-title"><h3>{{ division }} ({{ label }})</h3></div><div class="document-actions"><a class="download-link" href="/static/{{ year }}/{{ division }}-{{ year }}.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">Open PDF <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg><span class="sr-only"> — {{ division }} {{ year }} problem set</span></a><a class="aops-link" href="https://aops.com/community/{{ collection }}" target="_blank" rel="noopener" aria-describedby="new-tab-note">On AoPS <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg><span class="sr-only"> — {{ division }} {{ year }} collection</span></a></div></article>
     {% endfor %}
-    <article class="document-row results-row" data-division="both"><span class="document-figure" aria-hidden="true">∴</span><div class="document-title"><span class="number-label">BOTH DIVISIONS</span><h3>Results &amp; solutions</h3></div><div class="document-actions"><a class="download-link" href="/static/{{ year }}/results-solutions-{{ year }}.pdf">Results &amp; solutions <span class="file-type">PDF</span><svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v14M4 11l6 6 6-6"/></svg><span class="sr-only"> — {{ year }}</span></a></div></article>
+    <article class="document-row results-row" data-division="both"><span class="document-figure" aria-hidden="true">∴</span><div class="document-title"><h3>Results &amp; solutions</h3></div><div class="document-actions"><a class="download-link" href="/static/{{ year }}/results-solutions-{{ year }}.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">Open PDF <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v14M4 11l6 6 6-6"/></svg><span class="sr-only"> — {{ year }} results and solutions</span></a></div></article>
 </section>
 {% endfor %}
 </div>
-<aside class="archive-tip"><img class="tip-symbol" src="{{ static_asset('spark.svg') }}" alt=""><div><h2>Give the problem a little time.</h2><p>Try a few ideas before opening the solutions. Draw a picture, test a small case, or explain what you know. There’s more than one way in.</p><p class="content-note">Results &amp; solutions cover both divisions and stay visible when filtering.</p></div><a class="text-link" href="/about/">New to proofs? Start here <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></aside>
 {% endblock %}
