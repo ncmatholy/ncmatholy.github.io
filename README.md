@@ -1,5 +1,35 @@
 # North Carolina (Junior) Math Olympiad
 
+## Logo concepts for review
+
+Three concept mockups, each shown as a large logo and in light and dark navigation previews. These are design proposals only; the live website has not been changed. Click an image or its full-size link to inspect it.
+
+### A — NC Monogram
+
+An interlocking N and C with one coral accent.
+
+![A — NC Monogram logo with light and dark header previews](docs/review/logo-concepts/A-nc-monogram.png)
+
+[Open A at full size](docs/review/logo-concepts/A-nc-monogram.png)
+
+### B — Cardinal
+
+A geometric cardinal, North Carolina's state bird.
+
+![B — Cardinal logo with light and dark header previews](docs/review/logo-concepts/B-cardinal.png)
+
+[Open B at full size](docs/review/logo-concepts/B-cardinal.png)
+
+### C — Carolina Cut
+
+A state-inspired geometric silhouette with an angled cut.
+
+![C — Carolina Cut logo with light and dark header previews](docs/review/logo-concepts/C-carolina-cut.png)
+
+[Open C at full size](docs/review/logo-concepts/C-carolina-cut.png)
+
+---
+
 A small, self-contained Flask/Jinja site that builds to static HTML for GitHub Pages. Fonts, illustrations, CSS, and JavaScript are served locally. No database, API keys, or frontend framework is required.
 
 ## Reviewing the redesign
