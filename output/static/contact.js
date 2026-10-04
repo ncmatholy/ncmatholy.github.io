@@ -10,6 +10,7 @@
   const addressLink = document.getElementById("contact-email-address");
   const copyStatus = document.getElementById("contact-copy-status");
   const address = "ncmatholy@gmail.com";
+  let emailFrame;
 
   if (!form || !subject || !message || !gmailLink || !draftStatus || !copyButton || !addressLink || !copyStatus) return;
 
@@ -38,7 +39,13 @@
 
     const mailto = "mailto:" + address + "?subject=" + encodeURIComponent(draftSubject()) + "&body=" + encodeURIComponent(message.value);
     draftStatus.textContent = "Review and send the draft in your email app. If it didn’t open, use Gmail or copy the email address.";
-    window.open(mailto, "_blank", "noopener");
+    // An unavailable mail handler must not replace the contact form with an error page.
+    if (emailFrame) emailFrame.remove();
+    emailFrame = document.createElement("iframe");
+    emailFrame.hidden = true;
+    emailFrame.title = "Email app draft";
+    emailFrame.src = mailto;
+    document.body.appendChild(emailFrame);
   });
 
   gmailLink.addEventListener("click", function () {

@@ -137,11 +137,11 @@ test('Gmail drafts preserve typed content and open independently of the contact 
   await popup.close();
 });
 
-test('email drafts validate required messages and preserve their encoded contents', async ({ page }) => {
+test('email app drafts preserve encoded contents without opening another tab', async ({ page, context }) => {
   await page.goto('/contact/');
   const subjectInput = page.getByRole('textbox', { name: 'Subject', exact: true });
   const messageInput = page.getByRole('textbox', { name: 'Message', exact: true });
-  const compose = page.getByRole('button', { name: 'Open email draft' });
+  const compose = page.getByRole('button', { name: 'Open email app' });
   const subject = 'π, proofs & a + sign?';
   const message = 'First line & second question?\nTwo + two = four.\n你好';
   await subjectInput.fill(subject);
@@ -151,19 +151,24 @@ test('email drafts validate required messages and preserve their encoded content
   const session = await page.context().newCDPSession(page);
   await session.send('Page.enable');
   const requestedDrafts = [];
-  session.on('Page.windowOpen', event => {
+  const openedWindows = [];
+  session.on('Page.frameRequestedNavigation', event => {
     if (event.url.startsWith('mailto:')) requestedDrafts.push(event.url);
   });
+  session.on('Page.windowOpen', event => openedWindows.push(event));
   await compose.click();
   await expect(messageInput).toBeFocused();
   await expect(page.locator('#contact-draft-status')).toBeEmpty();
   expect(requestedDrafts).toEqual([]);
+  expect(openedWindows).toEqual([]);
   await expect(subjectInput).toHaveValue(subject);
   await expect(page).toHaveURL('/contact/');
 
   await messageInput.fill(message);
   await compose.click();
   await expect.poll(() => requestedDrafts.length).toBe(1);
+  expect(openedWindows).toEqual([]);
+  expect(context.pages()).toHaveLength(1);
   const destination = new URL(requestedDrafts[0]);
   expect(destination.protocol).toBe('mailto:');
   expect(destination.pathname).toBe('ncmatholy@gmail.com');

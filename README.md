@@ -60,7 +60,7 @@ Fonts are Lora for display headings, team names, and initials, and DM Sans for b
 
 ## Contact and contest rules
 
-Header and footer Contact links open `/contact/`; the footer also shows `ncmatholy@gmail.com`. Visitors can write an inquiry and open a draft in their email app or Gmail, then review and send it from their own account. No mail server or external form service is configured. Direct email and Gmail links remain usable without JavaScript. Adding delivery directly from the site would require an email service and its setup.
+Header and footer Contact links open `/contact/`; the footer also shows `ncmatholy@gmail.com`. Visitors can write an inquiry and choose Open email app or Open Gmail draft, then review and send it from their own account. Open email app invokes the configured mail handler from a hidden frame during the user’s click, keeping the contact form and typed message intact without creating a browser tab. If a visitor has no email app configured, Gmail and copy-address options remain available. No mail server or external form service is configured. Direct email and Gmail links remain usable without JavaScript. Adding delivery directly from the site would require an email service and its setup.
 
 The About page's Rules & scoring section uses the published 2025 NCJMO and NCMO instructions: five problems, three hours, seven points per problem, and grading based on completeness, clarity, and correctness. These PDFs remain unchanged. The organizers supplied the BAMO-style format and approximate difficulty comparisons: NCJMO is similar to BAMO-8; NCMO is approximately USAJMO. No external contest's eligibility, awards, or submission rules have been assumed.
 
