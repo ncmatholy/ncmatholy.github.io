@@ -2,15 +2,36 @@
 
 ## Logo concepts for review
 
-Three concept mockups, each shown as a large logo and in light and dark navigation previews. These are design proposals only; the live website has not been changed. Click an image or its full-size link to inspect it.
+Round 2 explores two new directions built around lettering and geometry. Each image includes light and dark header previews. These are concept mockups; the live website has not been changed. Click an image or its full-size link to inspect it.
+
+### D — Circular NC
+
+An open circular C surrounds a distinct N, whose diagonal carries the coral accent. This develops the original monogram with more space between the strokes.
+
+![D — Circular NC logo with light and dark header previews](docs/review/logo-concepts/D-circular-nc.png)
+
+[Open D at full size](docs/review/logo-concepts/D-circular-nc.png)
+
+### E — Drawn Lettering
+
+The competition name becomes the logo: angular N and M, circular C and O, and coral parentheses around a conventional J. The same custom wordmark works directly in the header.
+
+![E — Drawn Lettering logo with light and dark header previews](docs/review/logo-concepts/E-drawn-lettering.png)
+
+[Open E at full size](docs/review/logo-concepts/E-drawn-lettering.png)
+
+## Earlier concepts
 
 ### A — NC Monogram
 
-An interlocking N and C with one coral accent.
+The first interlocking N and C, retained for comparison with the new directions.
 
 ![A — NC Monogram logo with light and dark header previews](docs/review/logo-concepts/A-nc-monogram.png)
 
 [Open A at full size](docs/review/logo-concepts/A-nc-monogram.png)
+
+<details>
+<summary>Earlier concepts B and C</summary>
 
 ### B — Cardinal
 
@@ -27,6 +48,8 @@ A state-inspired geometric silhouette with an angled cut.
 ![C — Carolina Cut logo with light and dark header previews](docs/review/logo-concepts/C-carolina-cut.png)
 
 [Open C at full size](docs/review/logo-concepts/C-carolina-cut.png)
+
+</details>
 
 ---
 
