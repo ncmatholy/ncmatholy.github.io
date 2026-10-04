@@ -1,8 +1,10 @@
 # Simpler website review
 
-The homepage now uses a small, simple open-square mark. The construction grid, nested squares, page decorations, results-banner drawing, and division-card sigma/infinity symbols have been removed. The orange accent after the header wordmark is a square.
+The homepage now uses the exact same open-square logo as the header, kept small on desktop and hidden on mobile. The construction grid, nested squares, page decorations, results-banner drawing, and division-card sigma/infinity symbols have been removed. The orange accent after the header wordmark is a fixed 6×6 square SVG.
 
-Important visible text stays at least 16px on desktop and mobile. Archive filters and rows use the shorter NCMO/NCJMO names, with centered vector icons. All existing document and navigation destinations remain available.
+Important visible text stays at least 16px on desktop and mobile. Archive filters and rows use the shorter NCMO/NCJMO names, with centered vector icons. Every Open PDF arrow points to the top right, and its hover and keyboard-focus motion follows that direction. All existing document and navigation destinations remain available.
+
+The About and Team introductions now use plain descriptions: “Rules, scoring, and divisions for NC(J)MO” and “Meet the organizers and test solvers.” The homepage introduction also states only the two competition names and proof-based format.
 
 These screenshots show desktop (1440px) and mobile (390px) layouts:
 
