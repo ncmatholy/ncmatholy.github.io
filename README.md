@@ -45,7 +45,8 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 
 ## Where to edit
 
-- `templates/base.j2`: shared navigation, metadata, fonts, and footer.
+- `templates/base.j2`: shared navigation, theme toggle, metadata, fonts, and footer.
+- `templates/marks.j2`: shared inline logo geometry; its colors follow the active theme.
 - `templates/index.j2`: homepage, contest status, and historical schedule.
 - `templates/about.j2`: rules, scoring, division advice, and FAQs.
 - `templates/contact.j2`: inquiry composer and the public email address.
@@ -53,8 +54,9 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 - `templates/staff.j2`: leadership and test-solver biographies.
 - `custom.scss`: colors, type, spacing, responsive layout, and motion preferences.
 - `output/static/site.js`: mobile navigation, archive filters, and restrained scroll interactions. Content stays visible before animation setup and works without JavaScript. Reduced-motion preferences disable entrances and filter transitions, including when the preference changes while browsing.
+- `output/static/theme.js`: applies the theme before the stylesheet loads. The header toggle saves an explicit light/dark choice under `ncjmo-theme` in browser storage; without a saved choice, it follows device preferences, including changes while browsing. Storage restrictions still allow toggling on the current page. Other open tabs follow saved changes. Without JavaScript, CSS follows the device theme and the toggle stays hidden.
 - `output/static/contact.js`: email-app/Gmail drafts and copy-address feedback. It loads only on the Contact page; messages stay in the page and are not stored or sent by the site.
-- `output/static/mark.svg`: the simple open-square logo, shared by the header, homepage, and browser tab so their proportions and colors match. It uses forest green and coral on a warm-paper backplate, which blends into the page and stays visible on dark tabs. The homepage mark is small on desktop and hidden on mobile; other pages have plain headers. `geometry.svg`, `spark.svg`, and `favicon.svg` retain earlier asset URLs for compatibility.
+- `output/static/mark.svg`: the browser-tab version of the simple open-square logo, using forest green and coral on a warm-paper backplate that stays visible on dark tabs. The header and homepage use the identical geometry from `templates/marks.j2`, with forest green in light mode and pale mint in dark mode. The homepage mark is small on desktop and hidden on mobile; other pages have plain headers. `geometry.svg`, `spark.svg`, and `favicon.svg` retain earlier asset URLs for compatibility.
 
 Fonts are Lora for display headings, team names, and initials, and DM Sans for body text, distributed locally under the included SIL Open Font Licenses. Lora gives the contest name and other headings a conventional uppercase J. Earlier Fraunces and Bootstrap files remain available for compatibility with old static asset URLs; the redesigned pages do not load them or depend on external CDNs.
 

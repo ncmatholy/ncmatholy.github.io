@@ -2,7 +2,7 @@
 (() => {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#site-nav');
-  const mobile = window.matchMedia('(max-width: 760px)');
+  const mobile = window.matchMedia('(max-width: 900px)');
   if (toggle && nav) {
     let open = false;
     const render = () => {
