@@ -1,6 +1,6 @@
 # Simpler website review
 
-The homepage now uses the exact same open-square logo as the header, kept small on desktop and hidden on mobile. The orange corner’s width and height match the outline’s thickness; its outer edges also line up with the frame. The construction grid, nested squares, page decorations, results-banner drawing, and division-card sigma/infinity symbols have been removed. The orange accent after the header wordmark is a circle.
+The homepage now uses the exact same open-square logo as the header, kept small on desktop and hidden on mobile. The orange corner is slightly larger than the outline’s thickness, and its outer edges line up with the frame. The construction grid, nested squares, page decorations, results-banner drawing, and division-card sigma/infinity symbols have been removed. The orange accent after the header wordmark is a circle.
 
 Important visible text stays at least 16px on desktop and mobile. Archive filters and rows use the shorter NCMO/NCJMO names, with centered vector icons. Every Open PDF arrow points to the top right, and its hover and keyboard-focus motion follows that direction. All existing document and navigation destinations remain available.
 
