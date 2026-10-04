@@ -2,7 +2,7 @@
 
 ## Logo concepts for review
 
-Round 2 explores two new directions built around lettering and geometry. Each image includes light and dark header previews. These are concept mockups; the live website has not been changed. Click an image or its full-size link to inspect it.
+The three shortlisted concepts are A, D, and E. A now has its orange triangle aligned consistently in the large logo and header previews. These are concept mockups; the live website has not been changed. [Open the three-option staff review gallery](docs/review/logo-concepts/README.md), or inspect the previews below.
 
 ### D — Circular NC
 
@@ -20,15 +20,15 @@ The competition name becomes the logo: angular N and M, circular C and O, and co
 
 [Open E at full size](docs/review/logo-concepts/E-drawn-lettering.png)
 
-## Earlier concepts
+## Original monogram, refined
 
 ### A — NC Monogram
 
-The first interlocking N and C, retained for comparison with the new directions.
+An interlocking N and C, with the coral triangle aligned to the surrounding strokes.
 
-![A — NC Monogram logo with light and dark header previews](docs/review/logo-concepts/A-nc-monogram.png)
+![A — NC Monogram with aligned coral triangle and light and dark header previews](docs/review/logo-concepts/A-nc-monogram-aligned.png)
 
-[Open A at full size](docs/review/logo-concepts/A-nc-monogram.png)
+[Open A at full size](docs/review/logo-concepts/A-nc-monogram-aligned.png)
 
 <details>
 <summary>Earlier concepts B and C</summary>
