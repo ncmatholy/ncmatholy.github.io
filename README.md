@@ -2,7 +2,7 @@
 
 ## Logo concepts for review
 
-The three shortlisted concepts are A, D, and E. A now has its orange triangle aligned consistently in the large logo and header previews. These are concept mockups; the live website has not been changed. [Open the three-option staff review gallery](docs/review/logo-concepts/README.md), or inspect the previews below.
+The four concepts for staff review are A, D, E, and F. F places NCMO inside a North Carolina silhouette. These are concept mockups; the live website has not been changed. [Open the four-option staff review gallery](docs/review/logo-concepts/README.md), or inspect the previews below.
 
 ### D — Circular NC
 
@@ -19,6 +19,14 @@ The competition name becomes the logo: angular N and M, circular C and O, and co
 ![E — Drawn Lettering logo with light and dark header previews](docs/review/logo-concepts/E-drawn-lettering.png)
 
 [Open E at full size](docs/review/logo-concepts/E-drawn-lettering.png)
+
+### F — State Cutout
+
+NCMO set into a North Carolina silhouette, with light and dark header previews.
+
+![F — NCMO inside a North Carolina silhouette with light and dark header previews](docs/review/logo-concepts/F-state-cutout.png)
+
+[Open F at full size](docs/review/logo-concepts/F-state-cutout.png)
 
 ## Original monogram, refined
 

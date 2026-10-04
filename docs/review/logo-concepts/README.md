@@ -1,6 +1,6 @@
 # NC(J)MO logo options
 
-Three concepts for staff review. Each preview shows the logo at a large size and in light and dark website headers. Click an image to enlarge it. The live website has not been changed.
+Four concepts for staff review. Each preview shows the logo at a large size and in light and dark website headers. Click an image to enlarge it. The live website has not been changed.
 
 ## A — NC Monogram
 
@@ -25,3 +25,11 @@ A custom geometric NC(J)MO wordmark, with coral parentheses.
 ![E — Drawn Lettering](E-drawn-lettering.png)
 
 [Open E at full size](E-drawn-lettering.png)
+
+## F — State Cutout
+
+NCMO set into a North Carolina silhouette.
+
+![F — NCMO inside a North Carolina silhouette](F-state-cutout.png)
+
+[Open F at full size](F-state-cutout.png)
