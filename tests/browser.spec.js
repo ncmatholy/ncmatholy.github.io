@@ -3,6 +3,138 @@ const AxeBuilder = require('@axe-core/playwright').default;
 
 const routes = ['/', '/about/', '/staff/', '/archive/', '/contact/', '/404.html'];
 
+test('the theme toggle works with a keyboard and remembers the choice across pages', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/');
+  const theme = page.getByRole('button', { name: 'Dark mode', exact: true });
+  const root = page.locator('html');
+  await expect(theme).toBeVisible();
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  const lightBackground = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+
+  await theme.focus();
+  await page.keyboard.press('Space');
+  await expect(theme).toBeFocused();
+  await expect(theme).toHaveAttribute('aria-pressed', 'true');
+  await expect(root).toHaveAttribute('data-theme', 'dark');
+  expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).not.toBe(lightBackground);
+  expect(await page.evaluate(() => localStorage.getItem('ncjmo-theme'))).toBe('dark');
+
+  // Navigation and reload must retain an explicit choice even if the OS is light.
+  await page.goto('/archive/');
+  await expect(theme).toHaveAttribute('aria-pressed', 'true');
+  await expect(root).toHaveAttribute('data-theme', 'dark');
+  await page.reload();
+  await expect(theme).toHaveAttribute('aria-pressed', 'true');
+  await theme.focus();
+  await page.keyboard.press('Enter');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
+  expect(await page.evaluate(() => localStorage.getItem('ncjmo-theme'))).toBe('light');
+  expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe(lightBackground);
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await page.goto('/contact/');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await page.goBack();
+  await expect(page).toHaveURL('/archive/');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await page.goBack();
+  await expect(page).toHaveURL('/');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
+});
+
+test('an unsaved theme follows the operating system on first load and later changes', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('/about/');
+  const root = page.locator('html');
+  const theme = page.getByRole('button', { name: 'Dark mode', exact: true });
+  await expect(root).toHaveAttribute('data-theme', 'dark');
+  await expect(theme).toHaveAttribute('aria-pressed', 'true');
+  expect(await page.evaluate(() => localStorage.getItem('ncjmo-theme'))).toBeNull();
+  await page.emulateMedia({ colorScheme: 'light' });
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await expect(root).toHaveAttribute('data-theme', 'dark');
+  expect(await page.evaluate(() => localStorage.getItem('ncjmo-theme'))).toBeNull();
+});
+
+test('a saved dark theme is applied before the stylesheet becomes available', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.addInitScript(() => localStorage.setItem('ncjmo-theme', 'dark'));
+  let releaseStylesheet;
+  const stylesheetReady = new Promise(resolve => { releaseStylesheet = resolve; });
+  await page.route('**/static/site.css*', async route => {
+    await stylesheetReady;
+    await route.continue();
+  });
+  const navigation = page.goto('/');
+  try {
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  } finally {
+    releaseStylesheet();
+  }
+  await navigation;
+  await expect(page.getByRole('button', { name: 'Dark mode', exact: true })).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('storage denial leaves the theme toggle and navigation usable', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.addInitScript(() => {
+    for (const method of ['getItem', 'setItem', 'removeItem']) {
+      Storage.prototype[method] = () => { throw new DOMException('Storage denied', 'SecurityError'); };
+    }
+  });
+  await page.goto('/');
+  const theme = page.getByRole('button', { name: 'Dark mode', exact: true });
+  await theme.click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.emulateMedia({ colorScheme: 'light' });
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await theme.click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await page.getByRole('link', { name: 'Browse the archive', exact: true }).click();
+  await expect(page).toHaveURL('/archive/');
+  await expect(theme).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('theme choices synchronize with another open tab', async ({ page, context }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/');
+  const other = await context.newPage();
+  await other.emulateMedia({ colorScheme: 'light' });
+  await other.goto('/about/');
+  await page.getByRole('button', { name: 'Dark mode', exact: true }).click();
+  await expect(other.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(other.getByRole('button', { name: 'Dark mode', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await other.getByRole('button', { name: 'Dark mode', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.getByRole('button', { name: 'Dark mode', exact: true })).toHaveAttribute('aria-pressed', 'false');
+  await other.close();
+});
+
+for (const route of routes) {
+  test(`${route} dark theme has accessible contrast and no horizontal overflow`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
+    await page.goto(route);
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await expect(page.getByRole('button', { name: 'Dark mode', exact: true })).toHaveAttribute('aria-pressed', 'true');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+    const accessibility = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+      .analyze();
+    expect(accessibility.violations).toEqual([]);
+  });
+}
+
 for (const route of routes) {
   test(`${route} renders an accessible layout with working local links and assets`, async ({ page, request }) => {
     const errors = [];
@@ -64,7 +196,7 @@ test('FAQ answers start closed and open with mouse or keyboard', async ({ page }
 });
 
 test('mobile navigation opens with a keyboard, closes with Escape, and follows links', async ({ page }) => {
-  test.skip(page.viewportSize().width > 760, 'The menu is only used on narrow screens.');
+  test.skip(page.viewportSize().width > 900, 'The menu is only used on narrow screens.');
   await page.goto('/');
   const toggle = page.getByRole('button', { name: /^(Menu|Close)$/ });
   const navigation = page.getByRole('navigation', { name: 'Main navigation' });
@@ -266,6 +398,47 @@ test('reduced motion removes page and hover animation', async ({ page }) => {
 
 test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
+
+  test('the OS dark theme works without an unusable toggle', async ({ page, browser }) => {
+    await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' });
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: 'Dark mode', exact: true, includeHidden: true })).toBeHidden();
+    await expect(page.locator('html')).not.toHaveAttribute('data-theme');
+    const lightBackground = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).backgroundColor)).not.toBe(lightBackground);
+    expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toContain('dark');
+    await expect(page.getByRole('navigation', { name: 'Main navigation' })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+    // Axe requires JavaScript timers. Audit the same static page in a separate
+    // context where every site script is blocked but the injected audit can run.
+    const fallbackBackground = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    const auditContext = await browser.newContext({
+      javaScriptEnabled: true,
+      viewport: page.viewportSize(),
+      colorScheme: 'dark',
+      reducedMotion: 'reduce',
+    });
+    try {
+      await auditContext.route('**/*', async route => {
+        if (route.request().resourceType() === 'script') await route.abort();
+        else await route.continue();
+      });
+      const auditPage = await auditContext.newPage();
+      await auditPage.goto(page.url());
+      await auditPage.evaluate(() => document.fonts.ready);
+      await expect(auditPage.locator('html')).not.toHaveAttribute('data-theme');
+      await expect(auditPage.getByRole('button', { name: 'Dark mode', exact: true, includeHidden: true })).toBeHidden();
+      await expect(auditPage.getByRole('navigation', { name: 'Main navigation' })).toBeVisible();
+      expect(await auditPage.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe(fallbackBackground);
+      const accessibility = await new AxeBuilder({ page: auditPage })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+        .analyze();
+      expect(accessibility.violations).toEqual([]);
+    } finally {
+      await auditContext.close();
+    }
+  });
 
   test('navigation and every archived document remain usable', async ({ page, request }) => {
     await page.goto('/');
