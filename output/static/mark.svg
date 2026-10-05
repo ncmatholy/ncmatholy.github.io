@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
     <title id="title">NC(J)MO: a circular C around an N with a coral diagonal</title>
     <rect width="64" height="64" rx="8" fill="#f7f5ee"/>
-    <path d="M50.38477631 13.61522369A26 26 0 1 0 50.38477631 50.38477631" fill="none" stroke="#1b4840" stroke-width="5.4" stroke-linecap="butt"/>
-    <path d="M23.2 17H23.7L40.8 39.04457831V47H40.3L23.2 24.95542169Z" fill="#ed6745"/>
-    <path d="M18.5 17h5.2v30h-5.2zM40.3 17h5.2v30h-5.2z" fill="#1b4840"/>
+    <g transform="translate(4.2 0)">
+        <path d="M50.38477631 13.61522369A26 26 0 1 0 50.38477631 50.38477631" fill="none" stroke="#1b4840" stroke-width="5.4" stroke-linecap="butt"/>
+        <path d="M23.2 17H23.7L40.8 39.04457831V47H40.3L23.2 24.95542169Z" fill="#ed6745"/>
+        <path d="M18.5 17h5.2v30h-5.2zM40.3 17h5.2v30h-5.2z" fill="#1b4840"/>
+    </g>
 </svg>
