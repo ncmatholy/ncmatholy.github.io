@@ -28,9 +28,6 @@
     --card-focus-border:#86ad94; --card-shadow:#0000002b;
 }
 :root[data-theme='dark'] {@include dark-theme;}
-@media (prefers-color-scheme:dark) {
-    :root:not([data-theme]) {@include dark-theme;}
-}
 
 *, *::before, *::after {box-sizing: border-box;}
 html {scroll-behavior:smooth; scroll-padding-top:110px;}
@@ -73,10 +70,6 @@ p + p {margin-top:1.1em;}
 .theme-toggle .theme-sun {display:none;}
 :root[data-theme='dark'] .theme-toggle .theme-moon {display:none;}
 :root[data-theme='dark'] .theme-toggle .theme-sun {display:block;}
-@media (prefers-color-scheme:dark) {
-    :root:not([data-theme]) .theme-toggle .theme-moon {display:none;}
-    :root:not([data-theme]) .theme-toggle .theme-sun {display:block;}
-}
 .menu-toggle {background:transparent; min-width:44px; min-height:44px; font-weight:500; align-items:center; gap:15px; padding:10px 0 10px 10px;}
 .menu-lines {width:22px; height:12px; position:relative; border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); transition:transform .2s;}
 .menu-toggle[aria-expanded='true'] .menu-lines {transform:rotate(-45deg); border-bottom:0; height:0;}
