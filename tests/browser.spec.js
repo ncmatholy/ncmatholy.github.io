@@ -46,19 +46,27 @@ test('the theme toggle works with a keyboard and remembers the choice across pag
   await expect(theme).toHaveAttribute('aria-pressed', 'false');
 });
 
-test('an unsaved theme follows the operating system on first load and later changes', async ({ page }) => {
+test('an unsaved theme stays light across OS changes, reload, and navigation', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('/about/');
   const root = page.locator('html');
   const theme = page.getByRole('button', { name: 'Dark mode', exact: true });
-  await expect(root).toHaveAttribute('data-theme', 'dark');
-  await expect(theme).toHaveAttribute('aria-pressed', 'true');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
+  const lightBackground = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
   expect(await page.evaluate(() => localStorage.getItem('ncjmo-theme'))).toBeNull();
   await page.emulateMedia({ colorScheme: 'light' });
   await expect(root).toHaveAttribute('data-theme', 'light');
   await expect(theme).toHaveAttribute('aria-pressed', 'false');
   await page.emulateMedia({ colorScheme: 'dark' });
-  await expect(root).toHaveAttribute('data-theme', 'dark');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
+  await page.reload();
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await page.goto('/archive/');
+  await expect(root).toHaveAttribute('data-theme', 'light');
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
+  expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe(lightBackground);
   expect(await page.evaluate(() => localStorage.getItem('ncjmo-theme'))).toBeNull();
 });
 
@@ -84,7 +92,7 @@ test('a saved dark theme is applied before the stylesheet becomes available', as
 test('storage denial leaves the theme toggle and navigation usable', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.emulateMedia({ colorScheme: 'light' });
+  await page.emulateMedia({ colorScheme: 'dark' });
   await page.addInitScript(() => {
     for (const method of ['getItem', 'setItem', 'removeItem']) {
       Storage.prototype[method] = () => { throw new DOMException('Storage denied', 'SecurityError'); };
@@ -92,7 +100,11 @@ test('storage denial leaves the theme toggle and navigation usable', async ({ pa
   });
   await page.goto('/');
   const theme = page.getByRole('button', { name: 'Dark mode', exact: true });
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(theme).toHaveAttribute('aria-pressed', 'false');
   await theme.click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.emulateMedia({ colorScheme: 'light' });
@@ -105,11 +117,11 @@ test('storage denial leaves the theme toggle and navigation usable', async ({ pa
   expect(errors).toEqual([]);
 });
 
-test('theme choices synchronize with another open tab', async ({ page, context }) => {
-  await page.emulateMedia({ colorScheme: 'light' });
+test('theme choices and cleared or invalid preferences synchronize across tabs', async ({ page, context }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('/');
   const other = await context.newPage();
-  await other.emulateMedia({ colorScheme: 'light' });
+  await other.emulateMedia({ colorScheme: 'dark' });
   await other.goto('/about/');
   await page.getByRole('button', { name: 'Dark mode', exact: true }).click();
   await expect(other.locator('html')).toHaveAttribute('data-theme', 'dark');
@@ -117,12 +129,30 @@ test('theme choices synchronize with another open tab', async ({ page, context }
   await other.getByRole('button', { name: 'Dark mode', exact: true }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   await expect(page.getByRole('button', { name: 'Dark mode', exact: true })).toHaveAttribute('aria-pressed', 'false');
+  for (const operation of ['remove', 'clear', 'invalid']) {
+    await page.getByRole('button', { name: 'Dark mode', exact: true }).click();
+    await expect(other.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await other.evaluate(operation => {
+      if (operation === 'remove') localStorage.removeItem('ncjmo-theme');
+      else if (operation === 'clear') localStorage.clear();
+      else localStorage.setItem('ncjmo-theme', 'invalid');
+    }, operation);
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+    await expect(page.getByRole('button', { name: 'Dark mode', exact: true })).toHaveAttribute('aria-pressed', 'false');
+    // Reconcile a page restored from history as well as a freshly loaded page.
+    await other.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
+    await expect(other.locator('html')).toHaveAttribute('data-theme', 'light');
+    await other.reload();
+    await expect(other.locator('html')).toHaveAttribute('data-theme', 'light');
+    await expect(other.getByRole('button', { name: 'Dark mode', exact: true })).toHaveAttribute('aria-pressed', 'false');
+  }
   await other.close();
 });
 
 for (const route of routes) {
   test(`${route} dark theme has accessible contrast and no horizontal overflow`, async ({ page }) => {
-    await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
+    await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' });
+    await page.addInitScript(() => localStorage.setItem('ncjmo-theme', 'dark'));
     await page.goto(route);
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
@@ -399,15 +429,17 @@ test('reduced motion removes page and hover animation', async ({ page }) => {
 test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('the OS dark theme works without an unusable toggle', async ({ page, browser }) => {
-    await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' });
+  test('the static fallback stays light under OS dark without an unusable toggle', async ({ page, browser }) => {
+    await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
     await page.goto('/');
     await expect(page.getByRole('button', { name: 'Dark mode', exact: true, includeHidden: true })).toBeHidden();
     await expect(page.locator('html')).not.toHaveAttribute('data-theme');
     const lightBackground = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toBe('light');
+    await page.emulateMedia({ colorScheme: 'light' });
+    expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe(lightBackground);
     await page.emulateMedia({ colorScheme: 'dark' });
-    await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).backgroundColor)).not.toBe(lightBackground);
-    expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toContain('dark');
+    expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe(lightBackground);
     await expect(page.getByRole('navigation', { name: 'Main navigation' })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
     // Axe requires JavaScript timers. Audit the same static page in a separate

@@ -1,7 +1,6 @@
 /* Apply the theme before styles load, then connect the accessible toggle. */
 (() => {
   const storageKey = 'ncjmo-theme';
-  const system = window.matchMedia('(prefers-color-scheme: dark)');
   const root = document.documentElement;
   const themeColor = document.querySelector('meta[name="theme-color"]');
   const validTheme = value => value === 'light' || value === 'dark';
@@ -16,7 +15,7 @@
   }
 
   const apply = () => {
-    const theme = preference || (system.matches ? 'dark' : 'light');
+    const theme = preference || 'light';
     root.dataset.theme = theme;
     if (themeColor) themeColor.content = theme === 'dark' ? '#17231f' : '#f7f5ee';
     if (button) {
@@ -26,9 +25,6 @@
   };
   apply();
 
-  system.addEventListener('change', () => {
-    if (!preference) apply();
-  });
   window.addEventListener('storage', event => {
     if (event.key !== storageKey && event.key !== null) return;
     preference = validTheme(event.newValue) ? event.newValue : undefined;
