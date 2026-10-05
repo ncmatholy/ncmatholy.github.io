@@ -7,10 +7,10 @@
     <script src="/static/theme.js?v=d51761271cbf"></script>
     <meta name="description" content="Rules, scoring, and divisions for NC(J)MO.">
     <title>About the contest | NC(J)MO</title>
-    <link rel="icon" type="image/svg+xml" href="/static/mark.svg?v=86dd24241015">
+    <link rel="icon" type="image/svg+xml" href="/static/mark.svg?v=59758fae57a4">
     <link rel="preload" href="/static/fonts/lora-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/static/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/static/site.css?v=a97cc9abf7f4">
+    <link rel="stylesheet" href="/static/site.css?v=37bf3a183ba9">
     <script src="/static/site.js?v=9e2444075fe1" defer></script>
 </head>
 <body>
@@ -18,7 +18,11 @@
     <span id="new-tab-note" class="sr-only">Opens in a new tab.</span>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="/" aria-label="NC(J)MO home"><svg class="proof-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path class="proof-perimeter" d="M24 33H7V7H33V24" fill="none" stroke="var(--green)" stroke-width="5"/><path class="proof-corner" d="M29.5 29.5h6v6h-6z" fill="var(--coral)"/></svg><span>NC(J)MO<span class="brand-period" aria-hidden="true">.</span></span></a>
+            <a class="brand" href="/" aria-label="NC(J)MO home"><svg class="nc-mark" width="38" height="38" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+    <path class="nc-ring" d="M50.38477631 13.61522369A26 26 0 1 0 50.38477631 50.38477631" fill="none" stroke="var(--green)" stroke-width="5.4" stroke-linecap="butt"/>
+    <path class="nc-diagonal" d="M23.2 17H23.7L40.8 39.04457831V47H40.3L23.2 24.95542169Z" fill="var(--coral)"/>
+    <path class="nc-stems" d="M18.5 17h5.2v30h-5.2zM40.3 17h5.2v30h-5.2z" fill="var(--green)"/>
+</svg><span>NC(J)MO<span class="brand-period" aria-hidden="true">.</span></span></a>
             <div class="header-tools">
                 <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode" hidden>
                     <svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.2 14.3A8.5 8.5 0 0 1 9.7 3.8 8.5 8.5 0 1 0 20.2 14.3Z"/></svg>
@@ -40,32 +44,50 @@
 </header>
 <div class="container page-content">    <nav class="page-links" aria-label="On this page"><a class="text-link" href="#rules-scoring">Rules &amp; scoring</a><a class="text-link" href="#divisions">Divisions</a><a class="text-link" href="#common-questions">Questions</a></nav>
     <section class="section-space rules-section" id="rules-scoring" aria-labelledby="rules-title">
-        <div class="prose"><h2 class="section-title" id="rules-title">Rules &amp; scoring</h2><p id="contest-format">NC(J)MO follows a BAMO-style proof-based format. Both divisions have five problems and a three-hour time limit.</p></div>
-        <div class="rules-grid">
-            <article class="rule-card"><h3>7 points per problem</h3><p>Solutions are graded on completeness, clarity, and correctness. With five problems, the maximum score is 35 points.</p></article>
-            <article class="rule-card"><h3>Show your reasoning</h3><p>Write proofs that explain how you reached your conclusions. Submit any progress you have, even if you have not fully solved a problem.</p></article>
-            <article class="rule-card"><h3>Allowed tools</h3><p>You may use writing utensils, erasers, and scratch paper. A straightedge or ruler and a compass are optional.</p></article>
+        <div class="prose"><h2 class="section-title" id="rules-title">Rules &amp; scoring</h2><p id="contest-format">NC(J)MO follows a BAMO-style proof-based format.</p></div>
+        <div class="rules-layout">
+            <div class="format-panel">
+                <h3>Contest format</h3>
+                <table>
+                    <caption>Both NCJMO and NCMO</caption>
+                    <tbody>
+                        <tr><th scope="row">Problems</th><td>5 proof problems</td></tr>
+                        <tr><th scope="row">Time limit</th><td>3 hours</td></tr>
+                        <tr><th scope="row">Per problem</th><td>Up to 7 points</td></tr>
+                        <tr><th scope="row">Total</th><td>Up to 35 points</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="rules-explanation">
+                <h3>Scoring</h3>
+                <p>Solutions are graded on completeness, clarity, and correctness. A complete solution includes the reasoning that proves your answer.</p>
+                <p>Useful progress can earn partial credit. Submit the work you have, even if you have not fully solved a problem.</p>
+                <h3>Permitted materials</h3>
+                <p>The published contest instructions permit only writing utensils, erasers, and an optional straightedge and compass as tools.</p>
+            </div>
         </div>
-        <p class="rules-source">See the original scoring instructions in the <a href="/static/2025/NCJMO-2025.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">2025 NCJMO paper</a> and <a href="/static/2025/NCMO-2025.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">2025 NCMO paper</a>.</p>
+        <div class="solution-instructions">
+            <h3>Writing and submitting solutions</h3>
+            <ol>
+                <li>Explain your reasoning clearly, with enough detail to justify your conclusions.</li>
+                <li>When a problem asks for the greatest or least possible value, give an example that achieves your answer and prove that no better value is possible.</li>
+                <li>Label each page as your contest paper instructs. The 2025 papers ask for your contestant ID, problem number, and solution page number in the top right corner of every page you submit.</li>
+            </ol>
+        </div>
+        <p class="rules-source">These format, scoring, and page-labeling instructions are published in the <a href="/static/2025/NCJMO-2025.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">2025 NCJMO paper</a> and <a href="/static/2025/NCMO-2025.pdf" target="_blank" rel="noopener" aria-describedby="new-tab-note">2025 NCMO paper</a>.</p>
     </section>
     <section class="two-column section-space" aria-labelledby="our-story">
         <div class="prose">
-            <h2 class="section-title" id="our-story">Why this contest?</h2>
+            <h2 class="section-title" id="our-story">About NC(J)MO</h2>
             <p>
-                When you hear the phrase “math competition,” you’ll probably think of a fast-paced,
-                high-pressure short-answer test that rewards accuracy, intuition, and speed.
-                Although that has its own excitement, there is also something special
-                about being able to forget about time and pressure and simply wrestle with a difficult problem:
-                staring out the window as you let your mind wander through the craziest ideas before a solution clicks.
+                The North Carolina (Junior) Math Olympiad is a proof-based math competition.
+                Through NCJMO and NCMO, students with a range of experience can work on challenging
+                problems and write complete mathematical arguments.
             </p>
             <p>
-                We have met so many of you who are creative and ingenious,
-                and can think deeply and rigorously about difficult problems,
-                but don’t quite thrive in fast-paced, high-pressure environments.
-                Although competitions like the USA(J)MO encourage deep and rigorous thinking,
-                virtually all of these are only accessible at the highest levels,
-                standing behind the walls of short-answer tests such as the AMCs and AIME.
-                Our mission is to make these proof-based olympiads accessible to the community.
+                Our mission is to make proof-based olympiads accessible to the community.
+                We encourage students who are new to proof writing to participate, while offering
+                difficult problems that challenge experienced contestants.
             </p>
         </div>
         <aside class="info-panel" aria-labelledby="contest-practice">
@@ -77,24 +99,23 @@
 
     <section class="section-space" id="divisions" aria-labelledby="choose-division">
         <div class="prose">
-            <h2 class="section-title" id="choose-division">Choose your division</h2>
-            <p>You can get a feeling for the difficulty by exploring <a href="/archive">problems from previous years</a>.</p>
+            <h2 class="section-title" id="choose-division">Contest divisions</h2>
+            <p>Compare the guidance below and explore <a href="/archive">past problems</a> to find the appropriate difficulty.</p>
         </div>
         <div class="division-grid">
             <article class="division-card">
                 <h3>NCJMO (Junior)</h3>
                 <p>
-                    If you haven’t quite explored beyond school math,
-                    or tasted competition math beyond the AMCs, we encourage you to take the NCJMO.
+                    Recommended for students beginning to explore math beyond school or the AMCs,
+                    including those who are new to proof writing.
                 </p>
                 <p>The difficulty is similar to BAMO-8. Explore past NCJMO problems to see what to expect.</p>
             </article>
             <article class="division-card">
                 <h3>NCMO (Olympiad)</h3>
                 <p>
-                    If you’ve comfortably qualified for the AIME
-                    or have experience with proof writing, such as from an advanced math course,
-                    you should challenge yourself with the NCMO.
+                    Recommended for students who have comfortably qualified for the AIME
+                    or have experience with proof writing, such as from an advanced math course.
                 </p>
                 <p>The difficulty is approximately USAJMO level, with a couple of easier problems at the beginning and potentially a particularly challenging one at the end.</p>
             </article>

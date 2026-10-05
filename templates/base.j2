@@ -1,6 +1,6 @@
 {% set reg_link = "https://forms.gle/57ULZhRrbpaL4ZLq9" %}
 {% set active_page = active_page | default("") %}
-{% from "marks.j2" import proof_mark %}
+{% from "marks.j2" import nc_mark %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +22,7 @@
     <span id="new-tab-note" class="sr-only">Opens in a new tab.</span>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="/" aria-label="NC(J)MO home">{{ proof_mark(34) }}<span>NC(J)MO<span class="brand-period" aria-hidden="true">.</span></span></a>
+            <a class="brand" href="/" aria-label="NC(J)MO home">{{ nc_mark(38) }}<span>NC(J)MO<span class="brand-period" aria-hidden="true">.</span></span></a>
             <div class="header-tools">
                 <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode" hidden>
                     <svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.2 14.3A8.5 8.5 0 0 1 9.7 3.8 8.5 8.5 0 1 0 20.2 14.3Z"/></svg>

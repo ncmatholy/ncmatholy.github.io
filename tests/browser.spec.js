@@ -232,7 +232,7 @@ test('rules and scoring explain the format and each division’s difficulty', as
   await page.goto('/about/#rules-scoring');
   const rules = page.locator('#rules-scoring');
   await expect(rules).toBeVisible();
-  await expect(rules).toContainText(/five problems|5 problems/i);
+  await expect(rules).toContainText(/(?:five|5)(?: proof)? problems/i);
   await expect(rules).toContainText(/three[- ]hours?|3[- ]hours?/i);
   await expect(rules).toContainText(/7 points/);
   await expect(rules).toContainText(/35 points/);
@@ -381,7 +381,7 @@ test('all six archived downloads are PDF documents', async ({ page, request }) =
 test('reduced motion removes page and hover animation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await page.getByRole('link', { name: 'Explore past problems', exact: true }).hover();
+  await page.getByRole('main').getByRole('link', { name: 'Past problems', exact: true }).hover();
   const movingElements = await page.evaluate(() =>
     [...document.querySelectorAll('*')].flatMap(element =>
       [null, '::before', '::after'].flatMap(pseudo => {
