@@ -47,6 +47,7 @@ The existing workflow in `.github/workflows/static.yml` uploads **committed `out
 
 - `templates/base.j2`: shared navigation, theme toggle, metadata, fonts, and footer.
 - `templates/marks.j2`: shared inline logo geometry; its colors follow the active theme.
+- `templates/icons.j2`: shared link-arrow macro. Use `link_arrow()` for same-tab navigation and `link_arrow(true)` for links with `target="_blank"`. Hover/focus movement follows the actual link target; reduced motion disables it.
 - `templates/index.j2`: homepage, contest status, and historical schedule.
 - `templates/about.j2`: rules, scoring, division advice, and FAQs.
 - `templates/contact.j2`: inquiry composer and the public email address.
