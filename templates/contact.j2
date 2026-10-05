@@ -1,4 +1,5 @@
 {% extends "page.j2" %}
+{% from "icons.j2" import link_arrow %}
 {% set active_page = 'contact' %}
 {% set page_title = 'Contact' %}
 {% set page_desc = 'Questions about the contest? Send an inquiry to ncmatholy@gmail.com.' %}
@@ -20,7 +21,7 @@
         </form>
         <noscript><p>Use the email address or Gmail link below to write your inquiry.</p></noscript>
         <div class="contact-options">
-            <a id="gmail-draft-link" class="text-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ncmatholy%40gmail.com&amp;su=NC%28J%29MO%20inquiry" target="_blank" rel="noopener" aria-describedby="new-tab-note contact-compose-note">Open Gmail draft <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a>
+            <a id="gmail-draft-link" class="text-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ncmatholy%40gmail.com&amp;su=NC%28J%29MO%20inquiry" target="_blank" rel="noopener" aria-describedby="new-tab-note contact-compose-note">Open Gmail draft {{ link_arrow(true) }}</a>
         </div>
         <p id="contact-draft-status" class="contact-status" role="status" aria-live="polite"></p>
     </section>

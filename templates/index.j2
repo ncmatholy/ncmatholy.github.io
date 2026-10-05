@@ -1,4 +1,5 @@
 {% extends "base.j2" %}
+{% from "icons.j2" import link_arrow %}
 {% set active_page = 'home' %}
 {% from "marks.j2" import nc_mark %}
 {% block header %}
@@ -10,7 +11,7 @@
             <h2 id="registration-title">Registration</h2>
             <p>Dates and signup details for the next contest will appear here when announced.</p>
         </section>
-        <div class="hero-actions"><a class="button" href="/archive/">Past problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a><a class="text-link" href="/about/">Contest information <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a></div>
+        <div class="hero-actions"><a class="button" href="/archive/">Past problems {{ link_arrow() }}</a><a class="text-link" href="/about/">Contest information {{ link_arrow() }}</a></div>
     </div>
     <div class="hero-art" aria-hidden="true">{{ nc_mark(240) }}</div>
 </section>
@@ -19,20 +20,20 @@
 <div class="container">
     <section class="contest-facts" aria-labelledby="format-title">
         <div><h2 id="format-title">Contest format</h2><p>Each division has <strong>5 proof problems</strong> and a <strong>3-hour time limit</strong>.</p></div>
-        <a class="text-link" href="/about/#rules-scoring">Rules and scoring <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+        <a class="text-link" href="/about/#rules-scoring">Rules and scoring {{ link_arrow() }}</a>
     </section>
     <section class="section-space year-section" aria-labelledby="edition-title">
         <div class="section-heading"><div><h2 id="edition-title">2026 results</h2></div></div>
-        <a class="edition-card" href="/archive/#year-2026"><h3>Problems, results &amp; solutions</h3><span class="round-arrow" aria-hidden="true"><svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></span></a>
+        <a class="edition-card" href="/archive/#year-2026"><h3>Problems, results &amp; solutions</h3><span class="round-arrow" aria-hidden="true">{{ link_arrow() }}</span></a>
         <details class="historical-details"><summary>2026 contest schedule and updates<span class="details-plus" aria-hidden="true">+</span></summary><div class="historical-content"><p>The 2026 contest has concluded. This schedule is retained for reference.</p><div class="table-wrap"><table><caption>January 2026 contest schedule</caption><thead><tr><th scope="col">Site</th><th scope="col">Format</th><th scope="col">Date</th><th scope="col">Time</th></tr></thead><tbody><tr><th scope="row">Triangle</th><td>Online</td><td>January 24</td><td>2:00 PM–5:00 PM</td></tr><tr><th scope="row">Charlotte</th><td>Online</td><td>January 24</td><td>2:00 PM–5:00 PM</td></tr><tr><th scope="row">NCSSM Durham</th><td>Online</td><td>January 24</td><td>2:00 PM–5:00 PM</td></tr><tr><th scope="row">Online</th><td>Online</td><td>January 25</td><td>1:00 PM–4:00 PM</td></tr></tbody></table></div><p><strong>Contest update:</strong> A heavy snowstorm forecast for January 24 moved the Charlotte and Triangle sites online. The NCSSM Durham site also moved online when NCSSM shifted to condition 2.</p></div></details>
     </section>
     <section class="section-space starting-section" aria-labelledby="start-title">
-        <div class="section-heading"><div><h2 id="start-title">Contest divisions</h2></div><a class="text-link" href="/about/#divisions">Division details <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a></div>
+        <div class="section-heading"><div><h2 id="start-title">Contest divisions</h2></div><a class="text-link" href="/about/#divisions">Division details {{ link_arrow() }}</a></div>
         <div class="division-grid">
-            <article class="division-card"><h3>NCJMO (Junior)</h3><p>Similar to BAMO-8 difficulty. For students newer to proof-based math or whose competition experience is mainly the AMCs.</p><a class="text-link" href="/archive/?division=NCJMO">NCJMO past problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a></article>
-            <article class="division-card"><h3>NCMO (Olympiad)</h3><p>Approximately USAJMO difficulty. For students comfortable with the AIME or experienced in proof writing.</p><a class="text-link" href="/archive/?division=NCMO">NCMO past problems <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a></article>
+            <article class="division-card"><h3>NCJMO</h3><p>Similar to BAMO-8 difficulty. For students newer to proof-based math or whose competition experience is mainly the AMCs.</p><a class="text-link" href="/archive/?division=NCJMO">NCJMO past problems {{ link_arrow() }}</a></article>
+            <article class="division-card"><h3>NCMO</h3><p>Approximately USAJMO difficulty. For students comfortable with the AIME or experienced in proof writing.</p><a class="text-link" href="/archive/?division=NCMO">NCMO past problems {{ link_arrow() }}</a></article>
         </div>
     </section>
-    <section class="community-section" aria-labelledby="community-title"><h2 id="community-title">Our team</h2><p>Meet the organizers and problem writers behind NC(J)MO.</p><a class="text-link" href="/staff/">Meet our team <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></section>
+    <section class="community-section" aria-labelledby="community-title"><h2 id="community-title">Our team</h2><p>Meet the organizers and problem writers behind NC(J)MO.</p><a class="text-link" href="/staff/">Meet our team {{ link_arrow() }}</a></section>
 </div>
 {% endblock %}

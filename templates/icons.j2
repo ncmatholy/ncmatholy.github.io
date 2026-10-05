@@ -1,0 +1,3 @@
+{% macro link_arrow(new_tab=false) -%}
+<svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="{% if new_tab %}M4 16 16 4M4 4h12v12{% else %}M3 10h14M11 4l6 6-6 6{% endif %}"/></svg>
+{%- endmacro %}

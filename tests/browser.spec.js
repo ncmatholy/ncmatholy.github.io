@@ -111,7 +111,7 @@ test('storage denial leaves the theme toggle and navigation usable', async ({ pa
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await theme.click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
-  await page.getByRole('link', { name: 'Browse the archive', exact: true }).click();
+  await page.getByRole('main').getByRole('link', { name: 'Past problems', exact: true }).click();
   await expect(page).toHaveURL('/archive/');
   await expect(theme).toBeVisible();
   expect(errors).toEqual([]);

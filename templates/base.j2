@@ -1,6 +1,7 @@
 {% set reg_link = "https://forms.gle/57ULZhRrbpaL4ZLq9" %}
 {% set active_page = active_page | default("") %}
 {% from "marks.j2" import nc_mark %}
+{% from "icons.j2" import link_arrow %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,11 +44,10 @@
         {% block main %}<div class="container page-content">{% block content %}{% endblock %}</div>{% endblock %}
     </main>
     <footer class="site-footer">
-        <div class="container footer-top"><div><p class="footer-title">Past problems</p></div><a class="button button-light" href="/archive/">Browse the archive <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a></div>
         <div class="container footer-bottom">
             <div><a class="footer-brand" href="/">NC(J)MO.</a><p>North Carolina (Junior) Math Olympiad</p><p class="footer-contact"><a href="mailto:ncmatholy@gmail.com">ncmatholy@gmail.com</a></p></div>
             <nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/about/#rules-scoring">Rules &amp; scoring</a><a href="/archive/">Archive</a><a href="/staff/">Team</a><a href="/contact/">Contact</a></nav>
-            <p class="footer-edition">2026 edition<br><a href="{{ reg_link }}" target="_blank" rel="noopener" aria-describedby="new-tab-note">Original registration form <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M4 4h12v12"/></svg></a><span class="footer-form-note">The 2026 contest has concluded.</span></p>
+            <p class="footer-edition">2026 edition<br><a href="{{ reg_link }}" target="_blank" rel="noopener" aria-describedby="new-tab-note">Original registration form {{ link_arrow(true) }}</a><span class="footer-form-note">The 2026 contest has concluded.</span></p>
         </div>
     </footer>
 </body>
