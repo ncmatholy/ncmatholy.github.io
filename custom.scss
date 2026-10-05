@@ -55,7 +55,7 @@ p + p {margin-top:1.1em;}
 .site-header {background:var(--paper); position:relative; z-index:10;}
 .header-inner {display:flex; justify-content:space-between; align-items:center; min-height:100px; border-bottom:1px solid var(--line); gap:25px;}
 .brand {display:flex; gap:11px; align-items:center; font-family:var(--sans); font-size:26px; font-weight:700; letter-spacing:-.035em; line-height:1.15; white-space:nowrap;}
-.proof-mark {flex-shrink:0;}
+.nc-mark {flex-shrink:0;}
 .brand-period {color:var(--coral);}
 .site-nav {display:flex; align-items:center; gap:34px; font-size:16px; font-weight:500;}
 .site-nav > a {position:relative; padding-block:12px;}
@@ -96,15 +96,13 @@ p + p {margin-top:1.1em;}
 .text-link {display:inline-flex; gap:16px; align-items:center; font-size:16px; font-weight:500; border-bottom:1px solid var(--green); padding-bottom:3px; color:var(--green); width:fit-content;}
 .text-link span:not(.sr-only) {transition:transform .2s ease;}
 .text-link:hover span:not(.sr-only) {transform:translate(2px,-2px);}
-.hero-art {position:relative; align-self:center; justify-self:center; width:100%; max-width:280px; animation:arrive .8s ease-out both;}
-.hero-art .proof-mark {width:100%; height:auto;}
+.hero-art {position:relative; align-self:center; justify-self:center; width:100%; max-width:240px; animation:arrive .8s ease-out both;}
+.hero-art .nc-mark {width:100%; height:auto;}
 @keyframes arrive {from {opacity:0; transform:translateY(12px);} to {opacity:1; transform:translateY(0);}}
-.contest-facts {display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); padding-block:27px; gap:30px;}
-.contest-facts > div {display:flex; align-items:center; gap:24px; padding-left:25px; border-left:1px solid var(--line);}
-.contest-facts > div:first-child {border:0; padding-left:0;}
-.fact-number {font-family:var(--serif); font-size:59px; line-height:1.2; letter-spacing:-4px;}
-.fact-number > span {color:var(--coral);}
-.contest-facts p {font-size:16px; font-weight:500; line-height:1.7;}
+.contest-facts {display:flex; align-items:center; justify-content:space-between; border-block:1px solid var(--line); padding-block:24px; gap:24px;}
+.contest-facts h2 {font-family:var(--sans); font-size:21px; font-weight:700; letter-spacing:-.015em;}
+.contest-facts p {font-size:17px; color:var(--muted); margin-top:8px;}
+.contest-facts .text-link {flex-shrink:0; min-height:44px;}
 .section-space {margin-top:88px;}
 .section-heading {display:flex; justify-content:space-between; align-items:flex-end; gap:50px; margin-bottom:34px;}
 .section-heading h2, .section-title {font-size:clamp(34px,3.8vw,50px);}
@@ -127,7 +125,7 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
 .content-note {color:var(--muted); font-size:16px; line-height:1.7;}
 .division-grid {display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:26px;}
 .division-card {padding:32px; border:1px solid var(--line); border-radius:4px; position:relative; display:flex; flex-direction:column; align-items:flex-start;}
-.division-card h3 {font-size:30px; margin:15px 0 15px;}
+.division-card h3 {font-size:30px; margin:0 0 15px;}
 .division-card p {font-size:16px; color:var(--muted); max-width:450px;}
 .division-card .text-link {margin-top:27px;}
 .community-section {position:relative; padding-block:78px 90px; margin-top:88px; border-top:1px solid var(--line);}
@@ -166,11 +164,24 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
 .page-links {display:flex; flex-wrap:wrap; gap:12px 28px; padding-top:22px;}
 .page-links .text-link {min-height:44px;}
 .page-links + .section-space {margin-top:38px;}
-.rules-grid {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:30px;}
-.rule-card {border:1px solid var(--line); border-radius:4px; padding:28px; background:var(--sage);}
-.rule-card h3 {font-size:25px;}
-.rule-card p {margin-top:18px; font-size:16px; color:var(--muted);}
-.rules-source {margin-top:24px; font-size:16px; color:var(--muted);}
+.rules-layout {display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:40px; margin-top:30px; align-items:start;}
+.rules-section h3 {font-family:var(--sans); font-size:23px; font-weight:700; line-height:1.3; letter-spacing:-.015em;}
+.format-panel {border:1px solid var(--line); border-radius:4px; padding:28px; background:var(--sage);}
+.format-panel table {margin-top:20px; font-size:17px; line-height:1.5; min-width:0;}
+.format-panel caption {font-weight:400; color:var(--muted);}
+.format-panel th {width:43%; font-weight:500;}
+.format-panel td {padding-left:12px; padding-right:0;}
+.format-panel tr:last-child th, .format-panel tr:last-child td {border-bottom:0; padding-bottom:0;}
+.rules-explanation h3:not(:first-child) {margin-top:28px;}
+.rules-explanation p {margin-top:12px; font-size:17px; color:var(--muted);}
+.solution-instructions {margin-top:32px; border-top:1px solid var(--line); padding-top:28px;}
+.solution-instructions p, .solution-instructions li {font-size:17px; color:var(--muted);}
+.solution-instructions p {margin-top:14px;}
+.solution-instructions ol {margin:18px 0 0; padding-left:24px; max-width:940px;}
+.solution-instructions li {padding-left:6px;}
+.solution-instructions li + li {margin-top:14px;}
+.solution-instructions strong {color:var(--ink);}
+.rules-source {margin-top:24px; font-size:17px; color:var(--muted);}
 .rules-source a {color:var(--green); text-decoration:underline; text-underline-offset:3px;}
 .contact-layout {display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:36px; margin-top:48px; align-items:start;}
 .contact-card, .contact-details {border:1px solid var(--line); border-radius:4px; padding:34px;}
@@ -240,8 +251,6 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
     .hero {grid-template-columns:1.35fr 1fr; padding-top:50px;}
     .hero h1 {font-size:56px;}
     .site-nav {gap:24px;}
-    .contest-facts > div {gap:17px; padding-left:18px;}
-    .fact-number {font-size:49px;}
 }
 @media (max-width:900px) {
     .header-inner {min-height:80px; flex-wrap:wrap; gap:0;}
@@ -258,15 +267,13 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
     .hero-intro {font-size:16px;}
     .hero-actions {gap:20px;}
     .hero-actions .button {padding:13px 18px; gap:15px;}
-    .contest-facts {gap:16px;}
-    .contest-facts > div {align-items:flex-start; flex-direction:column; gap:8px; padding-left:20px;}
-    .fact-number {font-size:53px;}
+    .contest-facts {align-items:flex-start; flex-direction:column; gap:12px;}
     .section-heading {gap:30px;}
     .section-heading > p {max-width:290px; font-size:16px;}
     .two-column {gap:35px; grid-template-columns:1.3fr 1fr;}
     .info-panel {padding:26px;}
-    .rule-card {padding:22px;}
-    .rule-card h3 {font-size:23px;}
+    .rules-layout {gap:28px;}
+    .format-panel {padding:24px;}
     .contact-layout {gap:24px;}
     .contact-card, .contact-details {padding:26px;}
     .footer-bottom {grid-template-columns:1fr auto;}
@@ -277,7 +284,7 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
     html {scroll-padding-top:30px;}
     .container {width:calc(100% - 40px);}
     .brand {font-size:24px;}
-    .brand .proof-mark {width:30px; height:30px;}
+    .brand .nc-mark {width:34px; height:34px;}
     .hero {grid-template-columns:1fr; padding-top:40px; padding-bottom:28px; gap:15px;}
     .tiny-accent {font-size:16px; margin-right:5px;}
     .hero h1 {font-size:clamp(38px,10.7vw,48px);}
@@ -287,10 +294,7 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
     .registration-placeholder h2 {font-size:30px;}
     .hero-actions .button {padding:13px 18px;}
     .hero-art {display:none;}
-    .contest-facts {padding-block:23px; gap:12px;}
-    .contest-facts > div {padding-left:12px; gap:7px;}
-    .fact-number {font-size:41px; letter-spacing:-2px;}
-    .contest-facts p {font-size:16px; line-height:1.5;}
+    .contest-facts {padding-block:22px;}
     .section-space {margin-top:57px;}
     .section-heading {display:block; margin-bottom:25px;}
     .section-heading > p {margin-top:23px; max-width:440px;}
@@ -326,9 +330,10 @@ th,td {border-bottom:1px solid var(--line); padding:11px 15px 11px 0;}
     .info-panel .section-title {font-size:33px;}
     .page-links {gap:8px 20px;}
     .page-links + .section-space {margin-top:30px;}
-    .rules-grid {grid-template-columns:1fr; gap:16px; margin-top:25px;}
-    .rule-card {padding:24px;}
-    .rule-card h3 {font-size:25px;}
+    .rules-layout {grid-template-columns:1fr; gap:28px; margin-top:25px;}
+    .rules-section h3 {font-size:22px;}
+    .format-panel {padding:22px;}
+    .solution-instructions {margin-top:28px; padding-top:25px;}
     .contact-layout {grid-template-columns:1fr; gap:24px; margin-top:32px;}
     .contact-card, .contact-details {padding:24px;}
     .contact-card h2, .contact-details h2 {font-size:29px;}
