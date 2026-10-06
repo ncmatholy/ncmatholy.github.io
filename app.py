@@ -32,9 +32,10 @@ for page in PAGES:
     )
 
 
-@app.route("/favicon.ico")
-def favicon():
-    return send_from_directory("output", "favicon.ico")
+@app.route("/favicon.ico", defaults={"filename": "favicon.ico"})
+@app.route("/favicon-96.png", defaults={"filename": "favicon-96.png"})
+def favicon(filename):
+    return send_from_directory("output", filename)
 
 
 @app.errorhandler(404)
