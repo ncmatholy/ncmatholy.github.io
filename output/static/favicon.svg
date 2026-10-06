@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-labelledby="title"><title id="title">Proof: a forest-green open square with a coral corner</title><rect width="40" height="40" rx="5" fill="#f7f5ee"/><path d="M24 33H7V7H33V24" fill="none" stroke="#1b4840" stroke-width="5"/><path d="M29.5 29.5h6v6h-6z" fill="#ed6745"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+    <title id="title">NC(J)MO: a circular C around an N with a coral diagonal</title>
+    <rect width="64" height="64" rx="8" fill="#f7f5ee"/>
+    <g transform="translate(4.2 0)">
+        <path d="M50.38477631 13.61522369A26 26 0 1 0 50.38477631 50.38477631" fill="none" stroke="#1b4840" stroke-width="5.4" stroke-linecap="butt"/>
+        <path d="M23.2 17H23.7L40.8 39.04457831V47H40.3L23.2 24.95542169Z" fill="#ed6745"/>
+        <path d="M18.5 17h5.2v30h-5.2zM40.3 17h5.2v30h-5.2z" fill="#1b4840"/>
+    </g>
+</svg>

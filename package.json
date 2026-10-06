@@ -5,6 +5,7 @@
   "scripts": {
     "build": "npm run build:css && python app.py",
     "build:css": "sass custom.scss output/static/site.css --style=compressed --no-source-map",
+    "build:icons": "node scripts/build-favicons.js",
     "watch": "sass --watch custom.scss output/static/site.css --no-source-map",
     "dev": "python -m flask --app app run --debug --no-debugger --host 127.0.0.1 --port 8000",
     "preview": "python -m http.server 8080 --bind 127.0.0.1 --directory output",
